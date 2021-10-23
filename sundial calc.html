@@ -1,0 +1,199 @@
+<style>
+   body{
+   text-align: center;
+   background-color: black;
+   color: white;
+   }
+   button{
+   margin-top:5px;
+   background-color: black;
+   color: white;
+   border-color: White;
+   border-radius:5px; 
+   }
+   #des{
+   margin-right: 20px;
+   margin-left: 10px;
+   }
+   input{
+   background-color: black;
+   color: white;
+   border-color: White;
+   border-radius:5px; 
+   }
+   ::placeholder{
+   color: white;
+   }
+</style>
+<head><title>Sundial Calculator</title></head>
+<body>
+   <h1>Aarush Magic Sundial Calculator</h1>
+   <p id="des">Welcome to the Aarush Magic Sundial Calculator. You can use this calculator to calculate the angles of the shadow of a sundial at each latitude. A sundial is an object that when you point in the North direction in the northern hemisphere (or the south direction in the southern hemishpere), the shadow made from the sundial string and the angle of the sun can tell you the approximate time. This shadow-angle depends on your location, so please enter your latitude to get your place specific results. You can either choose "Calculate from Center" if you want to make the sundial with the vertical line being 0&deg, or you can choose "calculate From Edge" if you want the left edge of the sundial to be 0&deg. You can check the sundial time by matching it with your current time: <a id="clock"></a><p>
+   <input type="number" id="latitude" placeholder="Degrees"><input type="number" id="Minutes" placeholder="Minutes"><br>
+   <button id="center">Calculate From Center</button>
+  <button id="left">Calculate From Edge</button>
+   <p id="six">6 A.M. : </p>
+   <p id="seven">7 A.M. : </p>
+   <p id="eight">8 A.M. : </p>
+   <p id="nine">9 A.M. : </p>
+   <p id="ten">10 A.M. : </p>
+   <p id="eleven">11 A.M. : </p>
+   <p id="noon">Noon : </p>
+   <p id="one">1 P.M. : </p>
+   <p id="two">2 P.M. : </p>
+   <p id="three">3 P.M. : </p>
+   <p id="four">4 P.M. : </p>
+   <p id="five">5 P.M. : </p>
+   <p id="sixpm">6 P.M. : </p>
+</body>
+<script type="text/javascript">
+document.querySelector("#center").addEventListener("click", function() {
+        var deg=document.getElementById('latitude').value
+        var min= document.getElementById('Minutes').value
+        var lat = deg*1+(min/60);
+        const slat = Math.sin(lat*Math.PI/180)
+           var hr = 15*-6
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("six").innerHTML = "6 A.M. : "+angle;
+           var hr = 15*-5
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("seven").innerHTML = "7 A.M. : "+angle;
+           var hr = 15*-4
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("eight").innerHTML = "8 A.M. : "+angle;
+           var hr = 15*-3
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("nine").innerHTML = "9 A.M. : "+angle;
+           var hr = 15*-2
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("ten").innerHTML = "10 A.M. : "+angle;
+           var hr = 15*-1
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("eleven").innerHTML = "11 A.M. : "+angle;
+           var hr = 15*0
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("noon").innerHTML = "Noon : "+angle;
+           var hr = 15*1
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("one").innerHTML = "1 P.M. : "+angle;
+           var hr = 15*2
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("two").innerHTML = "2 P.M. : "+angle;
+           var hr = 15*3
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("three").innerHTML = "3 P.M. : "+angle;
+           var hr = 15*4
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("four").innerHTML = "4 P.M. : "+angle;
+           var hr = 15*5
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("five").innerHTML = "5 P.M. : "+angle;
+           var hr = 15*6
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("sixpm").innerHTML = "6 P.M. : "+angle;
+
+   }  )
+document.querySelector("#left").addEventListener("click", function() {
+        var deg=document.getElementById('latitude').value
+        var min= document.getElementById('Minutes').value
+        var lat = deg*1+(min/60);
+        const slat = Math.sin(lat*Math.PI/180)
+           var hr = 15*-6
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (90+Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("six").innerHTML = "6 A.M. : "+angle;
+           var hr = 15*-5
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (90+Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("seven").innerHTML = "7 A.M. : "+angle;
+           var hr = 15*-4
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (90+Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("eight").innerHTML = "8 A.M. : "+angle;
+           var hr = 15*-3
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (90+Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("nine").innerHTML = "9 A.M. : "+angle;
+           var hr = 15*-2
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (90+Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("ten").innerHTML = "10 A.M. : "+angle;
+           var hr = 15*-1
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (90+Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("eleven").innerHTML = "11 A.M. : "+angle;
+           var hr = 15*0
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (90+Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("noon").innerHTML = "Noon : "+angle;
+           var hr = 15*1
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (90+Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("one").innerHTML = "1 P.M. : "+angle;
+           var hr = 15*2
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (90+Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("two").innerHTML = "2 P.M. : "+angle;
+           var hr = 15*3
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (90+Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("three").innerHTML = "3 P.M. : "+angle;
+           var hr = 15*4
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (90+Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("four").innerHTML = "4 P.M. : "+angle;
+           var hr = 15*5
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (90+Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("five").innerHTML = "5 P.M. : "+angle;
+           var hr = 15*6
+           var thour= Math.tan(hr*Math.PI/180)
+           var angle = (90+Math.atan((thour*slat))*180/Math.PI).toFixed(2)
+        document.getElementById("sixpm").innerHTML = "6 P.M. : "+angle;
+
+   }  )   
+</script>
+<script>
+        setInterval(showTime, 1000);
+        function showTime() {
+            let time = new Date();
+            let hour = time.getHours();
+            let min = time.getMinutes();
+            let sec = time.getSeconds();
+            am_pm = "AM";
+  
+            if (hour > 12) {
+                hour -= 12;
+                am_pm = "PM";
+            }
+            if (hour == 0) {
+                hr = 12;
+                am_pm = "AM";
+            }
+  
+            hour = hour < 10 ? "0" + hour : hour;
+            min = min < 10 ? "0" + min : min;
+            sec = sec < 10 ? "0" + sec : sec;
+  
+            let currentTime = hour + ":" 
+                + min + ":" + sec + " "+ am_pm;
+  
+            document.getElementById("clock")
+                .innerHTML = currentTime;
+        }
+  
+        showTime();
+    </script>
