@@ -1,0 +1,445 @@
+<style>
+body{
+  text-align: center;
+}
+#sundial{
+  position: relative;
+  top: 30px;
+}
+#sundial-top{
+  outline: 2px solid black;
+  height: 288px;
+  margin: auto;
+  width: 288px;
+  top: 50px;
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#sundial-top-top{
+  outline: 2px solid black;
+  height: 288px;
+  margin: auto;
+  width: 288px;
+  position: absolute;
+}
+#sundial-bottom{
+  outline: 2px solid black;
+  width: 288px;
+  height: 288px;
+  margin: auto;
+  top: 338px;
+}
+#div-canvas{
+  outline: 2px solid red;
+  width: 144px;
+  height: 144px;
+  position: relative;
+  top: 2px;
+  right: 0px;
+}
+#logo{
+  position: absolute;
+  text-align: center;
+  height: 290px
+}
+#cut-top{
+  height: 288px;
+  length: 288px;
+}
+#triangleOne{
+  height: 288px;
+  length: 288px;
+}
+#triangle{
+  width: 288px;
+  height: 288px;
+  margin: auto;
+  position: relative;
+  top: 50px;
+  margin-bottom: 10px;
+  bottom: 10px;
+}
+   button{
+   padding-left: 5px;
+   padding-right: 5px;
+   
+   }
+</style>
+<html><body>
+  <h1>Aarush Magic Sundial Maker</h1>
+    <input type="number" id="latitude" placeholder="Enter Your Latitude"> <button id="left">Make My Sundial</button><br><br>
+     <button id="right">Or Use My Location</button> <button onclick="window.print();return false;">Print</button>
+  <div class= "print" id=sundial>
+    <div id=sundial-top>
+      <img id=logo src="mylogo.png">
+    <div id="sundial-top-top">
+      <canvas id="cut-top"></canvas>
+      </div></div>
+     
+    <div id=sundial-bottom>
+      <canvas id="canvas"></canvas>
+      <canvas id="cut-buttom"></canvas>
+  </div>
+    
+  </div>
+  <div id= triangle class="print">
+      <canvas id="triangleOne"></canvas>
+  </div>
+</body></html>
+<script>
+const c = document.getElementById("canvas");
+const ctx = c.getContext("2d");
+function drawAngle (abc) {
+ctx.beginPath();
+ctx.strokeStyle = "#000000";
+ctx.moveTo(144, 144);
+ctx.lineTo(288, (144-0.5*288*Math.tan((90-abc*1)*Math.PI/180)));
+ctx.stroke();}
+function drawAngleLeft (cba) {
+ctx.beginPath();
+ctx.moveTo(144, 144);
+ctx.lineTo(0, (144-0.5*288*Math.tan((90-cba*1)*Math.PI/180)));
+ctx.stroke();}                      
+function angleAtHour(hour) {
+  let deg =   document.getElementById("latitude").value;
+  let lat = deg;
+  const slat = Math.sin((lat * Math.PI) / 180);
+  var hr = 15 * hour;
+  var thour = Math.tan((hr * Math.PI) / 180);
+  return ((Math.atan(thour * slat) * 180) / Math.PI).toFixed(2);
+}
+function clearcanvas1()
+{
+    var canvas = document.getElementById('canvas'),
+        ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+function clearcanvas2()
+{
+    var canvas = document.getElementById('cut-top'),
+        ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+function clearcanvas3()
+{
+    var canvas = document.getElementById('triangleOne'),
+        ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+document.querySelector("#left").addEventListener("click", function () {
+  
+var deg =   document.getElementById("latitude").value;
+var lat = deg;
+  clearcanvas1();
+  clearcanvas2();
+  clearcanvas3();
+ctx.beginPath();
+ctx.strokeStyle = "#000000";
+ctx.moveTo(144, 144);
+ctx.lineTo(144, 0);
+ctx.stroke();
+ctx.beginPath();
+ctx.moveTo(144, 144);
+ctx.lineTo(0, 144);
+ctx.stroke();
+ctx.beginPath();
+ctx.moveTo(144, 144);
+ctx.lineTo(288, 144);
+ctx.stroke();
+  angle = angleAtHour(1);
+    drawAngle(angle)
+  angle = angleAtHour(2);
+    drawAngle(angle)
+  angle = angleAtHour(3);
+    drawAngle(angle)
+  angle = angleAtHour(4);
+    drawAngle(angle)
+  angle = angleAtHour(5);
+    drawAngle(angle)
+  angle = angleAtHour(1);
+    drawAngleLeft (angle)
+  angle = angleAtHour(2);
+    drawAngleLeft (angle)
+  angle = angleAtHour(3);
+    drawAngleLeft (angle)
+  angle = angleAtHour(4);
+    drawAngleLeft (angle)
+  angle = angleAtHour(5);
+    drawAngleLeft (angle)
+
+const d = document.getElementById("cut-top");
+const dtx = d.getContext("2d");
+
+dtx.beginPath();
+dtx.strokeStyle = "#FF0000";
+dtx.moveTo(75, 150);
+dtx.lineTo(75, 150-(75*Math.tan(lat*Math.PI/180)));
+dtx.stroke();
+ctx.beginPath();
+ctx.strokeStyle = "#FF0000";
+ctx.moveTo(144, 144);
+ctx.lineTo(144, 36);
+ctx.stroke();
+
+const e = document.getElementById("triangleOne");
+const etx = e.getContext("2d");
+var toa= 72*Math.tan(deg*Math.PI/180);
+etx.beginPath();
+etx.moveTo(15, 15);
+etx.lineTo(72+15, 15);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(15, 0);
+etx.lineTo(15+54, 0);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(15, 0);
+etx.lineTo(15, 15);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(15+54, 15);
+etx.lineTo(15+54, 0);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(72+15, 15);
+etx.lineTo(72+15, 15+toa);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(15, 15);
+etx.lineTo(72+15, 15+toa);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(72+30, 15);
+etx.lineTo(72+30, 15+toa);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(15+72, 15+toa);
+etx.lineTo(72+30, 15+toa);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(15+72, 15);
+etx.lineTo(72+30, 15);
+etx.stroke();
+});
+/*drawAngle(0)
+drawAngle(8.51)
+drawAngle(17.87)
+drawAngle(29.18)
+drawAngle(44.04)
+drawAngle(64.37)*/
+
+</script>
+<script>
+document.querySelector("#left").addEventListener("click", function () {
+  
+var deg =   document.getElementById("latitude").value;
+var lat = deg;
+  clearcanvas1();
+  clearcanvas2();
+  clearcanvas3();
+ctx.beginPath();
+ctx.strokeStyle = "#000000";
+ctx.moveTo(144, 144);
+ctx.lineTo(144, 0);
+ctx.stroke();
+ctx.beginPath();
+ctx.moveTo(144, 144);
+ctx.lineTo(0, 144);
+ctx.stroke();
+ctx.beginPath();
+ctx.moveTo(144, 144);
+ctx.lineTo(288, 144);
+ctx.stroke();
+  angle = angleAtHour(1);
+    drawAngle(angle)
+  angle = angleAtHour(2);
+    drawAngle(angle)
+  angle = angleAtHour(3);
+    drawAngle(angle)
+  angle = angleAtHour(4);
+    drawAngle(angle)
+  angle = angleAtHour(5);
+    drawAngle(angle)
+  angle = angleAtHour(1);
+    drawAngleLeft (angle)
+  angle = angleAtHour(2);
+    drawAngleLeft (angle)
+  angle = angleAtHour(3);
+    drawAngleLeft (angle)
+  angle = angleAtHour(4);
+    drawAngleLeft (angle)
+  angle = angleAtHour(5);
+    drawAngleLeft (angle)
+
+const d = document.getElementById("cut-top");
+const dtx = d.getContext("2d");
+
+dtx.beginPath();
+dtx.strokeStyle = "#FF0000";
+dtx.moveTo(75, 150);
+dtx.lineTo(75, 150-(75*Math.tan(lat*Math.PI/180)));
+dtx.stroke();
+ctx.beginPath();
+ctx.strokeStyle = "#FF0000";
+ctx.moveTo(144, 144);
+ctx.lineTo(144, 36);
+ctx.stroke();
+
+const e = document.getElementById("triangleOne");
+const etx = e.getContext("2d");
+var toa= 72*Math.tan(deg*Math.PI/180);
+etx.beginPath();
+etx.moveTo(15, 15);
+etx.lineTo(72+15, 15);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(15, 0);
+etx.lineTo(15+54, 0);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(15, 0);
+etx.lineTo(15, 15);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(15+54, 15);
+etx.lineTo(15+54, 0);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(72+15, 15);
+etx.lineTo(72+15, 15+toa);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(15, 15);
+etx.lineTo(72+15, 15+toa);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(72+30, 15);
+etx.lineTo(72+30, 15+toa);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(15+72, 15+toa);
+etx.lineTo(72+30, 15+toa);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(15+72, 15);
+etx.lineTo(72+30, 15);
+etx.stroke();
+
+});
+console.log("hello")
+document.querySelector("#right").addEventListener("click", function () {
+navigator.geolocation.getCurrentPosition(position => {
+const lat= position.coords.latitude;
+console.log(lat)
+  function angleAtHour(hour) {
+  const slat = Math.sin((lat * Math.PI) / 180);
+  var hr = 15 * hour;
+  var thour = Math.tan((hr * Math.PI) / 180);
+  return ((Math.atan(thour * slat) * 180) / Math.PI).toFixed(2);
+}
+  clearcanvas1();
+  clearcanvas2();
+  clearcanvas3();
+ctx.beginPath();
+ctx.strokeStyle = "#000000";
+ctx.moveTo(144, 144);
+ctx.lineTo(144, 0);
+ctx.stroke();
+ctx.beginPath();
+ctx.moveTo(144, 144);
+ctx.lineTo(0, 144);
+ctx.stroke();
+ctx.beginPath();
+ctx.moveTo(144, 144);
+ctx.lineTo(288, 144);
+ctx.stroke();
+  angle = angleAtHour(1);
+    drawAngle(angle)
+  angle = angleAtHour(2);
+    drawAngle(angle)
+  angle = angleAtHour(3);
+    drawAngle(angle)
+  angle = angleAtHour(4);
+    drawAngle(angle)
+  angle = angleAtHour(5);
+    drawAngle(angle)
+  angle = angleAtHour(1);
+    drawAngleLeft (angle)
+  angle = angleAtHour(2);
+    drawAngleLeft (angle)
+  angle = angleAtHour(3);
+    drawAngleLeft (angle)
+  angle = angleAtHour(4);
+    drawAngleLeft (angle)
+  angle = angleAtHour(5);
+    drawAngleLeft (angle)
+
+const d = document.getElementById("cut-top");
+const dtx = d.getContext("2d");
+
+dtx.beginPath();
+dtx.strokeStyle = "#FF0000";
+dtx.moveTo(75, 150);
+dtx.lineTo(75, 150-(75*Math.tan(lat*Math.PI/180)));
+dtx.stroke();
+ctx.beginPath();
+ctx.strokeStyle = "#FF0000";
+ctx.moveTo(144, 144);
+ctx.lineTo(144, 36);
+ctx.stroke();
+
+const e = document.getElementById("triangleOne");
+const etx = e.getContext("2d");
+var toa= 72*Math.tan(lat*Math.PI/180);
+etx.beginPath();
+etx.moveTo(15, 15);
+etx.lineTo(72+15, 15);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(15, 0);
+etx.lineTo(15+54, 0);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(15, 0);
+etx.lineTo(15, 15);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(15+54, 15);
+etx.lineTo(15+54, 0);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(72+15, 15);
+etx.lineTo(72+15, 15+toa);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(15, 15);
+etx.lineTo(72+15, 15+toa);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(72+30, 15);
+etx.lineTo(72+30, 15+toa);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(15+72, 15+toa);
+etx.lineTo(72+30, 15+toa);
+etx.stroke();
+etx.beginPath();
+etx.moveTo(15+72, 15);
+etx.lineTo(72+30, 15);
+etx.stroke();
+
+})
+   position()
+
+});
+   /*drawAngle(0)
+drawAngle(8.51)
+drawAngle(17.87)
+drawAngle(29.18)
+drawAngle(44.04)
+drawAngle(64.37)*/
+
+    </script>
