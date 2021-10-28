@@ -70,7 +70,7 @@ body{
 </style>
 <html><body>
   <h1>Aarush Magic Sundial Maker</h1>
-    <input type="number" id="latitude" placeholder="Enter Your Latitude"> <button id="left">Make My Sundial</button><br><br>
+    <input type="number" id="latitude" placeholder="Enter Your Latitude"min-value="-90" max="90"> <button id="left">Make My Sundial</button><br><br>
      <button id="right">Or Use My Location</button> <button onclick="window.print();return false;">Print</button>
   <div class= "print" id=sundial>
     <div id=sundial-top>
@@ -104,7 +104,7 @@ ctx.moveTo(144, 144);
 ctx.lineTo(0, (144-0.5*288*Math.tan((90-cba*1)*Math.PI/180)));
 ctx.stroke();}                      
 function angleAtHour(hour) {
-  let deg =   document.getElementById("latitude").value;
+  let deg =   Math.max(Math.min(document.getElementById("latitude").value, 90), -90);
   let lat = Math.abs(deg);
   const slat = Math.sin((lat * Math.PI) / 180);
   var hr = 15 * hour;
@@ -131,7 +131,7 @@ function clearcanvas3()
 }
 document.querySelector("#left").addEventListener("click", function () {
   
-var deg =   document.getElementById("latitude").value;
+var deg =   Math.max(Math.min(document.getElementById("latitude").value, 90), -90);
 var lat = Math.abs(deg);
   clearcanvas1();
   clearcanvas2();
@@ -235,7 +235,7 @@ drawAngle(64.37)*/
 <script>
 document.querySelector("#left").addEventListener("click", function () {
   
-var deg =   document.getElementById("latitude").value;
+var deg =   Math.max(Math.min(document.getElementById("latitude").value, 90), -90);
 var lat = Math.abs(deg);
   clearcanvas1();
   clearcanvas2();
@@ -329,7 +329,7 @@ etx.lineTo(72+30, 15);
 etx.stroke();
 
 });
-console.log("hello")
+console.log("No!! You found the secret of this website. Now go back, you don't belong here. Just use the sundial maker. Don't tell anyone about this. Shhh")
 document.querySelector("#right").addEventListener("click", function () {
 navigator.geolocation.getCurrentPosition(position => {
 const rawlat= position.coords.latitude;
