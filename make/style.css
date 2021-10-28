@@ -1,0 +1,22 @@
+#sundial-top{
+  outline: 2px solid black;
+  height: 288px;
+  margin: auto;
+  width: 288px;
+  top: 50px;
+}
+#sundial-bottom{
+  outline: 2px solid black;
+  width: 288px;
+  height: 288px;
+  margin: auto;
+  top: 338px;
+}
+#div-canvas{
+  outline: 2px solid red;
+  width: 144px;
+  height: 144px;
+  position: relative;
+  top: 2px;
+  right: 0px;
+}
