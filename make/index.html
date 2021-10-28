@@ -105,7 +105,7 @@ ctx.lineTo(0, (144-0.5*288*Math.tan((90-cba*1)*Math.PI/180)));
 ctx.stroke();}                      
 function angleAtHour(hour) {
   let deg =   document.getElementById("latitude").value;
-  let lat = deg;
+  let lat = Math.abs(deg);
   const slat = Math.sin((lat * Math.PI) / 180);
   var hr = 15 * hour;
   var thour = Math.tan((hr * Math.PI) / 180);
@@ -132,7 +132,7 @@ function clearcanvas3()
 document.querySelector("#left").addEventListener("click", function () {
   
 var deg =   document.getElementById("latitude").value;
-var lat = deg;
+var lat = Math.abs(deg);
   clearcanvas1();
   clearcanvas2();
   clearcanvas3();
@@ -186,7 +186,7 @@ ctx.stroke();
 
 const e = document.getElementById("triangleOne");
 const etx = e.getContext("2d");
-var toa= 72*Math.tan(deg*Math.PI/180);
+var toa= 72*Math.tan(lat*Math.PI/180);
 etx.beginPath();
 etx.moveTo(15, 15);
 etx.lineTo(72+15, 15);
@@ -236,7 +236,7 @@ drawAngle(64.37)*/
 document.querySelector("#left").addEventListener("click", function () {
   
 var deg =   document.getElementById("latitude").value;
-var lat = deg;
+var lat = Math.abs(deg);
   clearcanvas1();
   clearcanvas2();
   clearcanvas3();
@@ -290,7 +290,7 @@ ctx.stroke();
 
 const e = document.getElementById("triangleOne");
 const etx = e.getContext("2d");
-var toa= 72*Math.tan(deg*Math.PI/180);
+var toa= 72*Math.tan(lat*Math.PI/180);
 etx.beginPath();
 etx.moveTo(15, 15);
 etx.lineTo(72+15, 15);
@@ -332,7 +332,8 @@ etx.stroke();
 console.log("hello")
 document.querySelector("#right").addEventListener("click", function () {
 navigator.geolocation.getCurrentPosition(position => {
-const lat= position.coords.latitude;
+const rawlat= position.coords.latitude;
+const lat= Math.abs(rawlat);
 console.log(lat)
   function angleAtHour(hour) {
   const slat = Math.sin((lat * Math.PI) / 180);
@@ -376,6 +377,7 @@ ctx.stroke();
     drawAngleLeft (angle)
   angle = angleAtHour(5);
     drawAngleLeft (angle)
+
 
 const d = document.getElementById("cut-top");
 const dtx = d.getContext("2d");
