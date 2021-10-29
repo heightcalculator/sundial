@@ -1,3 +1,4 @@
+
 <style>
 body{
   text-align: center;
@@ -89,8 +90,9 @@ body{
       <canvas id="triangleOne"></canvas>
   </div>
 </body></html>
+
 <script>
-const c = document.getElementById("canvas");
+  const c = document.getElementById("canvas");
 const ctx = c.getContext("2d");
 function drawAngle (abc) {
 ctx.beginPath();
@@ -224,113 +226,9 @@ etx.moveTo(15+75, 15);
 etx.lineTo(75+30, 15);
 etx.stroke();
 });
-/*drawAngle(0)
-drawAngle(8.51)
-drawAngle(17.87)
-drawAngle(29.18)
-drawAngle(44.04)
-drawAngle(64.37)*/
 
-</script>
-<script>
-document.querySelector("#left").addEventListener("click", function () {
-  
-var deg =   Math.max(Math.min(document.getElementById("latitude").value, 90), -90);
-var lat = Math.abs(deg);
-  clearcanvas1();
-  clearcanvas2();
-  clearcanvas3();
-ctx.beginPath();
-ctx.strokeStyle = "#000000";
-ctx.moveTo(144, 144);
-ctx.lineTo(144, 0);
-ctx.stroke();
-ctx.beginPath();
-ctx.moveTo(144, 144);
-ctx.lineTo(0, 144);
-ctx.stroke();
-ctx.beginPath();
-ctx.moveTo(144, 144);
-ctx.lineTo(288, 144);
-ctx.stroke();
-  angle = angleAtHour(1);
-    drawAngle(angle)
-  angle = angleAtHour(2);
-    drawAngle(angle)
-  angle = angleAtHour(3);
-    drawAngle(angle)
-  angle = angleAtHour(4);
-    drawAngle(angle)
-  angle = angleAtHour(5);
-    drawAngle(angle)
-  angle = angleAtHour(1);
-    drawAngleLeft (angle)
-  angle = angleAtHour(2);
-    drawAngleLeft (angle)
-  angle = angleAtHour(3);
-    drawAngleLeft (angle)
-  angle = angleAtHour(4);
-    drawAngleLeft (angle)
-  angle = angleAtHour(5);
-    drawAngleLeft (angle)
-
-const d = document.getElementById("cut-top");
-const dtx = d.getContext("2d");
-
-dtx.beginPath();
-dtx.strokeStyle = "#FF0000";
-dtx.moveTo(75, 150);
-dtx.lineTo(75, 150-(75*Math.tan(lat*Math.PI/180)));
-dtx.stroke();
-ctx.beginPath();
-ctx.strokeStyle = "#FF0000";
-ctx.moveTo(144, 144);
-ctx.lineTo(144, 36);
-ctx.stroke();
-
-const e = document.getElementById("triangleOne");
-const etx = e.getContext("2d");
-var toa= 75*Math.tan(lat*Math.PI/180);
-etx.beginPath();
-etx.moveTo(15, 15);
-etx.lineTo(75+15, 15);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(15, 0);
-etx.lineTo(15+54, 0);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(15, 0);
-etx.lineTo(15, 15);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(15+54, 15);
-etx.lineTo(15+54, 0);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(75+15, 15);
-etx.lineTo(75+15, 15+toa);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(15, 15);
-etx.lineTo(75+15, 15+toa);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(75+30, 15);
-etx.lineTo(75+30, 15+toa);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(15+75, 15+toa);
-etx.lineTo(75+30, 15+toa);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(15+75, 15);
-etx.lineTo(75+30, 15);
-etx.stroke();
-
-});
 console.log("No!! You found the secret of this website. Now go back, you don't belong here. Just use the sundial maker. Don't tell anyone about this. Shhh")
-document.querySelector("#right").addEventListener("click", function () {
+document.getElementById("right").onclick = hfis => {
 navigator.geolocation.getCurrentPosition(position => {
 const rawlat= position.coords.latitude;
 const lat= Math.abs(rawlat);
@@ -435,12 +333,5 @@ etx.stroke();
 
 })
 
-});
-   /*drawAngle(0)
-drawAngle(8.51)
-drawAngle(17.87)
-drawAngle(29.18)
-drawAngle(44.04)
-drawAngle(64.37)*/
-
-    </script>
+};
+</script>
