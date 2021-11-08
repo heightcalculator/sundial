@@ -227,7 +227,7 @@ etx.lineTo(75+30, 15);
 etx.stroke();
 });
 
-console.log("No!! You found the secret of this website. Now go back, you don't belong here. Just use the sundial maker. Don't tell anyone about this. Shhh")
+console.log('Hey! You just found a hidden feature of this website! Below, type in "sundialAngle(your_latitude)" and press enter to get the list of sundial shadow angles for your latitude!')
 document.getElementById("right").onclick = hfis => {
 navigator.geolocation.getCurrentPosition(position => {
 const rawlat= position.coords.latitude;
@@ -334,4 +334,24 @@ etx.stroke();
 })
 
 };
+function sundialAngles(myLat) {  
+  console.log("At 6 am, the angle is -90 degrees")
+for (let i = -5; i <= -1; i++) {
+  let deg =   Math.max(Math.min(myLat, 90), -90);
+  let lat = Math.abs(deg);
+  const slat = Math.sin((lat * Math.PI) / 180);
+  var hr = 15 * i;
+  var thour = Math.tan((hr * Math.PI) / 180);
+  console.log("At "+(i+12)+" am, the angle is "+((Math.atan(thour * slat) * 180) / Math.PI).toFixed(2)+" degrees");
+}
+  console.log("At noon, the angle is 0 degrees")
+for (let i = 1; i <= 5; i++) {
+  let deg =   Math.max(Math.min(myLat, 90), -90);
+  let lat = Math.abs(deg);
+  const slat = Math.sin((lat * Math.PI) / 180);
+  var hr = 15 * i;
+  var thour = Math.tan((hr * Math.PI) / 180);
+  console.log("At "+i+" pm, the angle is "+((Math.atan(thour * slat) * 180) / Math.PI).toFixed(2)+" degrees");
+}  console.log("At 6 pm, the angle is 90 degrees")
+}
 </script>
