@@ -69,13 +69,16 @@ body{
    
    }
 </style>
-<html><body>
+<html><head>
+  <meta name="viewport" content="width=device-width"/>
+  <title>Sundial Maker</title>
+  </head><body>
   <h1>Aarush Magic Sundial Maker</h1>
     <input type="number" id="latitude" placeholder="Enter Your Latitude"min-value="-90" max="90"> <button id="left">Make My Sundial</button><br><br>
      <button id="right">Or Use My Location</button> <button onclick="document.execCommand('print', false, null)">Print</button>
   <div class= "print" id=sundial>
     <div id=sundial-top>
-      <img id=logo src="mylogo.png">
+      <img id=logo src="mylogo.png" alt="Aarush Magic Logo">
     <div id="sundial-top-top">
       <canvas id="cut-top"></canvas>
       </div></div>
