@@ -227,7 +227,7 @@ etx.lineTo(75+30, 15);
 etx.stroke();
 });
 
-console.log('Hey! You just found a hidden feature of this website! Below, type in "sundialAngle(your_latitude)" and press enter to get the list of sundial shadow angles for your latitude!')
+console.log('Hey! You just found a hidden feature of this website! Below, type in "sundialAngles(your_latitude)" and press enter to get the list of sundial shadow angles for your latitude!')
 document.getElementById("right").onclick = hfis => {
 navigator.geolocation.getCurrentPosition(position => {
 const rawlat= position.coords.latitude;
