@@ -2,10 +2,28 @@
 
 <!DOCTYPE html>
 <style>
-body{
+   body{
   text-align: center;
-  background-color: rgb(211,211,211);
+  font-family: serif;
+  background-image: url('background.jpg');
+
 }
+   h1{
+   font-size: 300%;
+   color: white;
+   
+   }
+   #everything{
+   border-style: inset;
+   border-width: 15px;
+   width: 76%;
+   border-radius: 10px;
+   margin: auto;
+   padding-left: 5px;
+   padding-right: 5px;
+   background-color: white /*rgb(220,220,220)*/;
+   margin-bottom: 15px;
+   }
 #sundial{
   position: relative;
   top: 30px;
@@ -69,14 +87,74 @@ body{
    button{
    padding-left: 5px;
    padding-right: 5px;
-   
+   padding-top: 2px;
+   padding-bottom: 2px;
+   border-radius: 5px;
+   fill: none;
+   }
+   .left{
+   margin-top:5px;
+   }
+   input{
+   padding-top: 2px;
+   padding-bottom: 2px;
+   border-radius: 5px;
    }
 @media print{
 .noprint {display:none;}
   body{
     background-color: white;
+    background-image: none;
   }
+   h1{
+   color: black;
+   }
+ #everything{
+   border-style: none;
+   padding-left: 0px;
+   padding-right: 0px;
+   background-color: white;
+   margin-bottom: 0px;
+   }
 }
+   @media only screen and (max-width: 500px) {
+      body{
+  text-align: center;
+  background-color: rgb(211,211,211);
+  font-family: serif;
+  background-image: none;
+  color: black;
+  font-size: 15px; 
+
+}
+   h1{
+   font-size: 240%;
+   color: black;
+   
+   }
+   #everything{
+   border-style: none;
+   background-color: rgb(211,211,211);
+   display: fill;
+   }
+   button{
+   padding-left: 5px;
+   padding-right: 5px;
+   padding-top: 2px;
+   padding-bottom: 2px;
+   border-radius: 5px;
+   fill: none;
+   }
+   .left{
+   margin-top:5px;
+   }
+   input{
+
+   padding-top: 2px;
+   padding-bottom: 2px;
+   border-radius: 5px;
+   }
+   }
 </style>
 <html lang="en"><head>
   <meta name="viewport" content="width=device-width"/>
@@ -84,8 +162,9 @@ body{
   <title>Aarush Magic Sundial Maker</title>
   </head><body>
   <h1>Aarush Magic Sundial Maker</h1>
-    <p class="noprint"><b>Instructions:</b> Use a latitude or your location to make a sundial. The print it out on a regular sheet of 8.5x11 piece of paper (cardstock would work better, but it will work with regular paper too). If everything works, the sundial should print as a 6x3 rectangle. Cut it out along with the triangular piece on the bottom. On the sundial, cut along the 2 red lines. Fold the sundial along the middle to make a right angle. Then insert the flaps of the triangle through the cut slot and fold them backwards. Tape or glue them to the back. Lay your sundial flat and point it north to get the time as shown by the shadow created by the triangle! Here's your current time: <span id="clock"></span></p>
-    <input class="noprint" type="number" id="latitude" placeholder="Enter Your Latitude"min-value="-90" max="90"> <button id="left" class="noprint">Make My Sundial</button><br><br>
+   <div id="everything">
+      <p class="noprint">Make A Sundial By Entering Your Latitude Or Using Your Location!</p>
+    <input class="noprint" type="number" id="latitude" placeholder="Enter Your Latitude"min-value="-90" max="90"><br> <button id="left" class="noprint">Make My Sundial</button><br><br>
      <button class="noprint" id="right">Or Use My Location</button> <button class="noprint" onclick="document.execCommand('print', false, null)">Print</button>
   <div class= "print" id=sundial>
     <div id=sundial-top>
@@ -103,11 +182,13 @@ body{
   <div id= triangle class="print">
       <canvas id="triangleOne"></canvas>
   </div>
-  <a class="noprint" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span class="noprint">This work is licensed under a </span><a class="noprint" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>
+       <p class="noprint"><b>Instructions:</b> Use a latitude or your location to make a sundial. The print it out on a regular sheet of 8.5x11 piece of paper (cardstock would work better, but it will work with regular paper too). If everything works, the sundial should print as a 6x3 rectangle. Cut it out along with the triangular piece on the bottom. On the sundial, cut along the 2 red lines. Fold the sundial along the middle to make a right angle. Then insert the flaps of the triangle through the cut slot and fold them backwards. Tape or glue them to the back. Lay your sundial flat and point it north to get the time as shown by the shadow created by the triangle! Here's your current time: <span id="clock"></span></p>
+   </div>
+  <a class="noprint" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span style="color: white;" class="noprint">This work is licensed under a </span><a style="color: white;" class="noprint" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>
 </body></html>
 
 <script>
-  const c = document.getElementById("canvas");
+const c = document.getElementById("canvas");
 const ctx = c.getContext("2d");
 function drawAngle (abc) {
 ctx.beginPath();
