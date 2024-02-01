@@ -199,11 +199,11 @@
     <div id="everything">
         <p class="noprint">Make A Sundial By Entering Your Latitude Or Using Your Location!</p>
         <input class="noprint" type="number" id="latitude" placeholder="Enter Your Latitude" min-value="-90"
-            max="90"><br> <button id="left" class="noprint">Make My Sundial</button><br>
+            max="90"><br> <button id="left" class="noprint">Make My Sundial</button><br class="noprint">
         <button class="noprint" id="right">Or Use My Location</button> <button class="noprint"
-            onclick="document.execCommand('print', false, null)">Print</button><br>
-        <input type="checkbox" id="instructions" name="instructions" value="true">
-        <label for="instructions"> Include using instructions</label>
+            onclick="document.execCommand('print', false, null)">Print</button><br class="noprint">
+        <input class="noprint" type="checkbox" id="instructions" name="instructions" value="true">
+        <label class="noprint" for="instructions"> Include using instructions</label>
         <div class="print" id=sundial>
             <div id=sundial-top>
                 <img id=logo src="logo_transparent.png" alt="Aarush Magic Logo">
