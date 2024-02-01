@@ -242,14 +242,15 @@
 <script>
     const c = document.getElementById("canvas");
     const ctx = c.getContext("2d");
-    function writeInstructions() {
+    function writeInstructions(lat) {
         const f = document.getElementById("cut-bottom");
         const ftx = f.getContext("2d");
-        if (!document.getElementById("instructions").checked){
-            ftx.clearRect(0, 0, canvas.width, canvas.height);
+        ftx.clearRect(0, 0, canvas.width, canvas.height);
+        if (!document.getElementById("instructions").checked) {
             return;
         }
-        var txt = "Instructions:\n1. Point the sundial north\n2. Hold the sundial flat\n3. Estimate time by looking at the shadow\n4. Don't forget to account for daylight savings time\n5. Enjoy!!";
+        direction = lat >= 0 ? "north" : "south";
+        var txt = "Instructions:\n1. Point the sundial " + direction + "\n2. Hold the sundial flat\n3. Estimate time by looking at the shadow\n4. Don't forget to account for daylight savings time\n5. Enjoy!!";
         var x = 15;
         var y = 10;
         var lineheight = 15;
@@ -390,7 +391,7 @@
         etx.moveTo(15 + 75, 15);
         etx.lineTo(75 + 30, 15);
         etx.stroke();
-        writeInstructions()
+        writeInstructions(deg)
     });
 
     console.log('Hey! You just found a hidden feature of this website! Below, type in "sundialAngles(your_latitude)" and press enter to get the list of sundial shadow angles for your latitude!')
@@ -496,7 +497,7 @@
             etx.moveTo(15 + 75, 15);
             etx.lineTo(75 + 30, 15);
             etx.stroke();
-            writeInstructions()
+            writeInstructions(rawlat)
         })
 
     };
