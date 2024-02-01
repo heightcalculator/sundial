@@ -1,487 +1,555 @@
-
-
 <!DOCTYPE html>
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-   body{
-  text-align: center;
-  font-family: serif;
-  background-image: url('background.jpg');
+    body {
+        text-align: center;
+        font-family: serif;
+        background-image: url('background.jpg');
 
-}
-   h1{
-   font-size: 300%;
-   color: white;
-   
-   }
-   #everything{
-   border-style: inset;
-   border-width: 15px;
-   width: 76%;
-   border-radius: 10px;
-   margin: auto;
-   padding-left: 5px;
-   padding-right: 5px;
-   background-color: white /*rgb(220,220,220)*/;
-   margin-bottom: 15px;
-   }
-#sundial{
-  position: relative;
-  top: 30px;
-}
-#sundial-top{
-  outline: 2px solid black;
-  height: 288px;
-  margin: auto;
-  width: 288px;
-  top: 50px;
-  text-align: center;
-  vertical-align: middle;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#sundial-top-top{
-  outline: 2px solid black;
-  height: 288px;
-  margin: auto;
-  width: 288px;
-  position: absolute;
-}
-#sundial-bottom{
-  outline: 2px solid black;
-  width: 288px;
-  height: 288px;
-  margin: auto;
-  top: 338px;
-}
-#div-canvas{
-  outline: 2px solid red;
-  width: 144px;
-  height: 144px;
-  position: relative;
-  top: 2px;
-  right: 0px;
-}
-#logo{
-  position: absolute;
-  text-align: center;
-  height: 290px
-}
-#cut-top{
-  height: 288px;
-  length: 288px;
-}
-#triangleOne{
-  height: 288px;
-  length: 288px;
-}
-#triangle{
-  width: 288px;
-  height: 288px;
-  margin: auto;
-  position: relative;
-  top: 50px;
-  margin-bottom: 10px;
-  bottom: 10px;
-}
-   button{
-   padding-left: 5px;
-   padding-right: 5px;
-   padding-top: 2px;
-   padding-bottom: 2px;
-   border-radius: 5px;
-   fill: none;
-   }
-   .left{
-   margin-top:5px;
-   }
-   input{
-   padding-top: 2px;
-   padding-bottom: 2px;
-   border-radius: 5px;
-   }
-@media print{
-.noprint {display:none;}
-  body{
-    background-color: white;
-    background-image: none;
-  }
-   h1{
-   color: black;
-   }
- #everything{
-   border-style: none;
-   padding-left: 0px;
-   padding-right: 0px;
-   background-color: white;
-   margin-bottom: 0px;
-   }
-}
-   @media only screen and (max-width: 500px) {
-      body{
-  text-align: center;
-  background-color: rgb(211,211,211);
-  font-family: serif;
-  background-image: none;
-  color: black;
-  font-size: 15px; 
+    }
 
-}
-   h1{
-   font-size: 240%;
-   color: black;
-   
-   }
-   #everything{
-   border-style: none;
-   background-color: rgb(211,211,211);
-   display: fill;
-   }
-   button{
-   padding-left: 5px;
-   padding-right: 5px;
-   padding-top: 2px;
-   padding-bottom: 2px;
-   border-radius: 5px;
-   fill: none;
-   }
-   .left{
-   margin-top:5px;
-   }
-   input{
+    h1 {
+        font-size: 300%;
+        color: white;
 
-   padding-top: 2px;
-   padding-bottom: 2px;
-   border-radius: 5px;
-   }
-   }
+    }
+
+    #everything {
+        border-style: inset;
+        border-width: 15px;
+        width: 76%;
+        border-radius: 10px;
+        margin: auto;
+        padding-left: 5px;
+        padding-right: 5px;
+        background-color: white
+            /*rgb(220,220,220)*/
+        ;
+        margin-bottom: 15px;
+    }
+
+    #sundial {
+        position: relative;
+        top: 30px;
+    }
+
+    #sundial-top {
+        outline: 2px solid black;
+        height: 288px;
+        margin: auto;
+        width: 288px;
+        top: 50px;
+        text-align: center;
+        vertical-align: middle;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #sundial-top-top {
+        outline: 2px solid black;
+        height: 288px;
+        margin: auto;
+        width: 288px;
+        position: absolute;
+    }
+
+    #sundial-bottom {
+        outline: 2px solid black;
+        width: 288px;
+        height: 288px;
+        margin: auto;
+        top: 338px;
+    }
+
+    #div-canvas {
+        outline: 2px solid red;
+        width: 144px;
+        height: 144px;
+        position: relative;
+        top: 2px;
+        right: 0px;
+    }
+
+    #logo {
+        position: absolute;
+        text-align: center;
+        height: 290px
+    }
+
+    #cut-top {
+        height: 288px;
+    }
+
+    #triangleOne {
+        height: 288px;
+    }
+
+    #triangle {
+        width: 288px;
+        height: 288px;
+        margin: auto;
+        position: relative;
+        top: 50px;
+        margin-bottom: 10px;
+        bottom: 10px;
+    }
+
+    button {
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        border-radius: 5px;
+        margin-bottom: 3px;
+        margin-top: 3px;
+        fill: none;
+    }
+
+    .left {
+        margin-top: 5px;
+    }
+
+    input {
+        padding-top: 2px;
+        padding-bottom: 2px;
+        border-radius: 5px;
+    }
+
+    @media print {
+        .noprint {
+            display: none;
+        }
+
+        body {
+            background-color: white;
+            background-image: none;
+        }
+
+        h1 {
+            color: black;
+        }
+
+        #everything {
+            border-style: none;
+            padding-left: 0px;
+            padding-right: 0px;
+            background-color: white;
+            margin-bottom: 0px;
+        }
+    }
+
+    @media only screen and (max-width: 500px) {
+        body {
+            text-align: center;
+            background-color: rgb(211, 211, 211);
+            font-family: serif;
+            background-image: none;
+            color: black;
+            font-size: 15px;
+
+        }
+
+        h1 {
+            font-size: 240%;
+            color: black;
+
+        }
+
+        #everything {
+            border-style: none;
+            background-color: rgb(211, 211, 211);
+            display: fill;
+        }
+
+        button {
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            border-radius: 5px;
+            fill: none;
+        }
+
+        .left {
+            margin-top: 5px;
+        }
+
+        input {
+
+            padding-top: 2px;
+            padding-bottom: 2px;
+            border-radius: 5px;
+        }
+    }
 </style>
-<html lang="en"><head>
+<html lang="en">
 
-  <meta name="description" content="Use this free calculator to make a sundial for you in 2 clicks! No sign-up required!"/>
-  <title>Aarush Magic Sundial Maker</title>
-  </head><body>
-  <h1>Aarush Magic Sundial Maker</h1>
-   <div id="everything">
-      <p class="noprint">Make A Sundial By Entering Your Latitude Or Using Your Location!</p>
-    <input class="noprint" type="number" id="latitude" placeholder="Enter Your Latitude"min-value="-90" max="90"><br> <button id="left" class="noprint">Make My Sundial</button><br><br>
-     <button class="noprint" id="right">Or Use My Location</button> <button class="noprint" onclick="document.execCommand('print', false, null)">Print</button>
-  <div class= "print" id=sundial>
-    <div id=sundial-top>
-      <img id=logo src="logo_transparent.png" alt="Aarush Magic Logo">
-    <div id="sundial-top-top">
-      <canvas id="cut-top"></canvas>
-      </div></div>
-     
-    <div id=sundial-bottom>
-      <canvas id="canvas"></canvas>
-      <canvas id="cut-buttom"></canvas>
-  </div>
-    
-  </div>
-  <div id= triangle class="print">
-      <canvas id="triangleOne"></canvas>
-  </div>
-       <p class="noprint"><b>Instructions:</b> Use a latitude or your location to make a sundial. The print it out on a regular sheet of 8.5x11 piece of paper (cardstock would work better, but it will work with regular paper too). If everything works, the sundial should print as a 6x3 rectangle. Cut it out along with the triangular piece on the bottom. On the sundial, cut along the 2 red lines. Fold the sundial along the middle to make a right angle. Then insert the flaps of the triangle through the cut slot and fold them backwards. Tape or glue them to the back. Lay your sundial flat and point it north to get the time as shown by the shadow created by the triangle! Here's your current time: <span id="clock"></span></p>
-   </div>
-  <a class="noprint" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span style="color: white;" class="noprint">This work is licensed under a </span><a style="color: white;" class="noprint" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>
-</body></html>
+<head>
+
+    <meta name="description"
+        content="Use this free calculator to make a sundial for you in 2 clicks! No sign-up required!" />
+    <title>Aarush Magic Sundial Maker</title>
+</head>
+
+<body>
+    <h1 class="noprint">Aarush Magic Sundial Maker</h1>
+    <div id="everything">
+        <p class="noprint">Make A Sundial By Entering Your Latitude Or Using Your Location!</p>
+        <input class="noprint" type="number" id="latitude" placeholder="Enter Your Latitude" min-value="-90"
+            max="90"><br> <button id="left" class="noprint">Make My Sundial</button><br>
+        <button class="noprint" id="right">Or Use My Location</button> <button class="noprint"
+            onclick="document.execCommand('print', false, null)">Print</button><br>
+        <input type="checkbox" id="instructions" name="instructions" value="true">
+        <label for="instructions"> Include using instructions</label>
+        <div class="print" id=sundial>
+            <div id=sundial-top>
+                <img id=logo src="logo_transparent.png" alt="Aarush Magic Logo">
+                <div id="sundial-top-top">
+                    <canvas id="cut-top"></canvas>
+                </div>
+            </div>
+
+            <div id=sundial-bottom>
+                <canvas id="canvas"></canvas>
+                <canvas id="cut-bottom"></canvas>
+            </div>
+
+        </div>
+        <div id=triangle class="print">
+            <canvas id="triangleOne"></canvas>
+        </div>
+        <p class="noprint"><b>Instructions:</b> Use a latitude or your location to make a sundial. The print it out on a
+            regular sheet of 8.5x11 piece of paper (cardstock would work better, but it will work with regular paper
+            too). If everything works, the sundial should print as a 6x3 rectangle. Cut it out along with the triangular
+            piece on the bottom. On the sundial, cut along the 2 red lines. Fold the sundial along the middle to make a
+            right angle. Then insert the flaps of the triangle through the cut slot and fold them backwards. Tape or
+            glue them to the back. Lay your sundial flat and point it north to get the time as shown by the shadow
+            created by the triangle! Here's your current time: <span id="clock"></span></p>
+    </div>
+    <a class="noprint" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
+            alt="Creative Commons License" style="border-width:0"
+            src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span style="color: white;"
+        class="noprint">This work is licensed under a </span><a style="color: white;" class="noprint" rel="license"
+        href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike
+        4.0 International License</a>
+</body>
+
+</html>
 
 <script>
-const c = document.getElementById("canvas");
-const ctx = c.getContext("2d");
-function drawAngle (abc) {
-ctx.beginPath();
-ctx.strokeStyle = "#000000";
-ctx.moveTo(144, 144);
-ctx.lineTo(288, (144-0.5*288*Math.tan((90-abc*1)*Math.PI/180)));
-ctx.stroke();}
-function drawAngleLeft (cba) {
-ctx.beginPath();
-ctx.moveTo(144, 144);
-ctx.lineTo(0, (144-0.5*288*Math.tan((90-cba*1)*Math.PI/180)));
-ctx.stroke();}                      
-function angleAtHour(hour) {
-  let deg =   Math.max(Math.min(document.getElementById("latitude").value, 90), -90);
-  let lat = Math.abs(deg);
-  const slat = Math.sin((lat * Math.PI) / 180);
-  var hr = 15 * hour;
-  var thour = Math.tan((hr * Math.PI) / 180);
-  return ((Math.atan(thour * slat) * 180) / Math.PI).toFixed(2);
-}
-function clearcanvas1()
-{
-    var canvas = document.getElementById('canvas'),
-        ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
-function clearcanvas2()
-{
-    var canvas = document.getElementById('cut-top'),
-        ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
-function clearcanvas3()
-{
-    var canvas = document.getElementById('triangleOne'),
-        ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
-document.querySelector("#left").addEventListener("click", function () {
-  
-var deg =   Math.max(Math.min(document.getElementById("latitude").value, 90), -90);
-var lat = Math.abs(deg);
-  clearcanvas1();
-  clearcanvas2();
-  clearcanvas3();
-ctx.beginPath();
-ctx.strokeStyle = "#000000";
-ctx.moveTo(144, 144);
-ctx.lineTo(144, 0);
-ctx.stroke();
-ctx.beginPath();
-ctx.moveTo(144, 144);
-ctx.lineTo(0, 144);
-ctx.stroke();
-ctx.beginPath();
-ctx.moveTo(144, 144);
-ctx.lineTo(288, 144);
-ctx.stroke();
-  angle = angleAtHour(1);
-    drawAngle(angle)
-  angle = angleAtHour(2);
-    drawAngle(angle)
-  angle = angleAtHour(3);
-    drawAngle(angle)
-  angle = angleAtHour(4);
-    drawAngle(angle)
-  angle = angleAtHour(5);
-    drawAngle(angle)
-  angle = angleAtHour(1);
-    drawAngleLeft (angle)
-  angle = angleAtHour(2);
-    drawAngleLeft (angle)
-  angle = angleAtHour(3);
-    drawAngleLeft (angle)
-  angle = angleAtHour(4);
-    drawAngleLeft (angle)
-  angle = angleAtHour(5);
-    drawAngleLeft (angle)
+    const c = document.getElementById("canvas");
+    const ctx = c.getContext("2d");
+    function writeInstructions() {
+        const f = document.getElementById("cut-bottom");
+        const ftx = f.getContext("2d");
+        if (!document.getElementById("instructions").checked){
+            ftx.clearRect(0, 0, canvas.width, canvas.height);
+            return;
+        }
+        var txt = "Instructions:\n1. Point the sundial north\n2. Hold the sundial flat\n3. Estimate time by looking at the shadow\n4. Don't forget to account for daylight savings time\n5. Enjoy!!";
+        var x = 15;
+        var y = 10;
+        var lineheight = 15;
+        var lines = txt.split('\n');
+        ftx.font = "11px Times New Romanx";
+        for (var i = 0; i < lines.length; i++) {
+            ftx.fillText(lines[i], x, y + (i * lineheight));
+        }
+    }
+    function drawAngle(abc) {
+        ctx.beginPath();
+        ctx.strokeStyle = "#000000";
+        ctx.moveTo(144, 144);
+        ctx.lineTo(288, (144 - 0.5 * 288 * Math.tan((90 - abc * 1) * Math.PI / 180)));
+        ctx.stroke();
+    }
+    function drawAngleLeft(cba) {
+        ctx.beginPath();
+        ctx.moveTo(144, 144);
+        ctx.lineTo(0, (144 - 0.5 * 288 * Math.tan((90 - cba * 1) * Math.PI / 180)));
+        ctx.stroke();
+    }
+    function angleAtHour(hour) {
+        let deg = Math.max(Math.min(document.getElementById("latitude").value, 90), -90);
+        let lat = Math.abs(deg);
+        const slat = Math.sin((lat * Math.PI) / 180);
+        var hr = 15 * hour;
+        var thour = Math.tan((hr * Math.PI) / 180);
+        return ((Math.atan(thour * slat) * 180) / Math.PI).toFixed(2);
+    }
+    function clearcanvas1() {
+        var canvas = document.getElementById('canvas'),
+            ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    function clearcanvas2() {
+        var canvas = document.getElementById('cut-top'),
+            ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    function clearcanvas3() {
+        var canvas = document.getElementById('triangleOne'),
+            ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    document.querySelector("#left").addEventListener("click", function () {
 
-const d = document.getElementById("cut-top");
-const dtx = d.getContext("2d");
-
-dtx.beginPath();
-dtx.strokeStyle = "#FF0000";
-dtx.moveTo(75, 150);
-dtx.lineTo(75, 150-(75*Math.tan(lat*Math.PI/180)));
-dtx.stroke();
-ctx.beginPath();
-ctx.strokeStyle = "#FF0000";
-ctx.moveTo(144, 144);
-ctx.lineTo(144, 36);
-ctx.stroke();
-
-const e = document.getElementById("triangleOne");
-const etx = e.getContext("2d");
-var toa= 75*Math.tan(lat*Math.PI/180);
-etx.beginPath();
-etx.moveTo(15, 15);
-etx.lineTo(75+15, 15);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(15, 0);
-etx.lineTo(15+54, 0);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(15, 0);
-etx.lineTo(15, 15);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(15+54, 15);
-etx.lineTo(15+54, 0);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(75+15, 15);
-etx.lineTo(75+15, 15+toa);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(15, 15);
-etx.lineTo(75+15, 15+toa);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(75+30, 15);
-etx.lineTo(75+30, 15+toa);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(15+75, 15+toa);
-etx.lineTo(75+30, 15+toa);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(15+75, 15);
-etx.lineTo(75+30, 15);
-etx.stroke();
-});
-
-console.log('Hey! You just found a hidden feature of this website! Below, type in "sundialAngles(your_latitude)" and press enter to get the list of sundial shadow angles for your latitude!')
-document.getElementById("right").onclick = hfis => {
-navigator.geolocation.getCurrentPosition(position => {
-const rawlat= position.coords.latitude;
-const lat= Math.abs(rawlat);
-console.log(lat)
-  function angleAtHour(hour) {
-  const slat = Math.sin((lat * Math.PI) / 180);
-  var hr = 15 * hour;
-  var thour = Math.tan((hr * Math.PI) / 180);
-  return ((Math.atan(thour * slat) * 180) / Math.PI).toFixed(2);
-}
-  clearcanvas1();
-  clearcanvas2();
-  clearcanvas3();
-ctx.beginPath();
-ctx.strokeStyle = "#000000";
-ctx.moveTo(144, 144);
-ctx.lineTo(144, 0);
-ctx.stroke();
-ctx.beginPath();
-ctx.moveTo(144, 144);
-ctx.lineTo(0, 144);
-ctx.stroke();
-ctx.beginPath();
-ctx.moveTo(144, 144);
-ctx.lineTo(288, 144);
-ctx.stroke();
-  angle = angleAtHour(1);
-    drawAngle(angle)
-  angle = angleAtHour(2);
-    drawAngle(angle)
-  angle = angleAtHour(3);
-    drawAngle(angle)
-  angle = angleAtHour(4);
-    drawAngle(angle)
-  angle = angleAtHour(5);
-    drawAngle(angle)
-  angle = angleAtHour(1);
-    drawAngleLeft (angle)
-  angle = angleAtHour(2);
-    drawAngleLeft (angle)
-  angle = angleAtHour(3);
-    drawAngleLeft (angle)
-  angle = angleAtHour(4);
-    drawAngleLeft (angle)
-  angle = angleAtHour(5);
-    drawAngleLeft (angle)
+        var deg = Math.max(Math.min(document.getElementById("latitude").value, 90), -90);
+        var lat = Math.abs(deg);
+        clearcanvas1();
+        clearcanvas2();
+        clearcanvas3();
+        ctx.beginPath();
+        ctx.strokeStyle = "#000000";
+        ctx.moveTo(144, 144);
+        ctx.lineTo(144, 0);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(144, 144);
+        ctx.lineTo(0, 144);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(144, 144);
+        ctx.lineTo(288, 144);
+        ctx.stroke();
+        angle = angleAtHour(1);
+        drawAngle(angle)
+        angle = angleAtHour(2);
+        drawAngle(angle)
+        angle = angleAtHour(3);
+        drawAngle(angle)
+        angle = angleAtHour(4);
+        drawAngle(angle)
+        angle = angleAtHour(5);
+        drawAngle(angle)
+        angle = angleAtHour(1);
+        drawAngleLeft(angle)
+        angle = angleAtHour(2);
+        drawAngleLeft(angle)
+        angle = angleAtHour(3);
+        drawAngleLeft(angle)
+        angle = angleAtHour(4);
+        drawAngleLeft(angle)
+        angle = angleAtHour(5);
+        drawAngleLeft(angle);
 
 
-const d = document.getElementById("cut-top");
-const dtx = d.getContext("2d");
+        const d = document.getElementById("cut-top");
+        const dtx = d.getContext("2d");
 
-dtx.beginPath();
-dtx.strokeStyle = "#FF0000";
-dtx.moveTo(75, 150);
-dtx.lineTo(75, 150-(75*Math.tan(lat*Math.PI/180)));
-dtx.stroke();
-ctx.beginPath();
-ctx.strokeStyle = "#FF0000";
-ctx.moveTo(144, 144);
-ctx.lineTo(144, 36);
-ctx.stroke();
+        dtx.beginPath();
+        dtx.strokeStyle = "#FF0000";
+        dtx.moveTo(75, 150);
+        dtx.lineTo(75, 150 - (75 * Math.tan(lat * Math.PI / 180)));
+        dtx.stroke();
+        ctx.beginPath();
+        ctx.strokeStyle = "#FF0000";
+        ctx.moveTo(144, 144);
+        ctx.lineTo(144, 36);
+        ctx.stroke();
 
-const e = document.getElementById("triangleOne");
-const etx = e.getContext("2d");
-var toa= 75*Math.tan(lat*Math.PI/180);
-etx.beginPath();
-etx.moveTo(15, 15);
-etx.lineTo(75+15, 15);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(15, 0);
-etx.lineTo(15+54, 0);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(15, 0);
-etx.lineTo(15, 15);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(15+54, 15);
-etx.lineTo(15+54, 0);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(75+15, 15);
-etx.lineTo(75+15, 15+toa);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(15, 15);
-etx.lineTo(75+15, 15+toa);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(75+30, 15);
-etx.lineTo(75+30, 15+toa);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(15+75, 15+toa);
-etx.lineTo(75+30, 15+toa);
-etx.stroke();
-etx.beginPath();
-etx.moveTo(15+75, 15);
-etx.lineTo(75+30, 15);
-etx.stroke();
+        const e = document.getElementById("triangleOne");
+        const etx = e.getContext("2d");
+        var toa = 75 * Math.tan(lat * Math.PI / 180);
+        etx.beginPath();
+        etx.moveTo(15, 15);
+        etx.lineTo(75 + 15, 15);
+        etx.stroke();
+        etx.beginPath();
+        etx.moveTo(15, 0);
+        etx.lineTo(15 + 54, 0);
+        etx.stroke();
+        etx.beginPath();
+        etx.moveTo(15, 0);
+        etx.lineTo(15, 15);
+        etx.stroke();
+        etx.beginPath();
+        etx.moveTo(15 + 54, 15);
+        etx.lineTo(15 + 54, 0);
+        etx.stroke();
+        etx.beginPath();
+        etx.moveTo(75 + 15, 15);
+        etx.lineTo(75 + 15, 15 + toa);
+        etx.stroke();
+        etx.beginPath();
+        etx.moveTo(15, 15);
+        etx.lineTo(75 + 15, 15 + toa);
+        etx.stroke();
+        etx.beginPath();
+        etx.moveTo(75 + 30, 15);
+        etx.lineTo(75 + 30, 15 + toa);
+        etx.stroke();
+        etx.beginPath();
+        etx.moveTo(15 + 75, 15 + toa);
+        etx.lineTo(75 + 30, 15 + toa);
+        etx.stroke();
+        etx.beginPath();
+        etx.moveTo(15 + 75, 15);
+        etx.lineTo(75 + 30, 15);
+        etx.stroke();
+        writeInstructions()
+    });
 
-})
+    console.log('Hey! You just found a hidden feature of this website! Below, type in "sundialAngles(your_latitude)" and press enter to get the list of sundial shadow angles for your latitude!')
+    document.getElementById("right").onclick = hfis => {
+        navigator.geolocation.getCurrentPosition(position => {
+            const rawlat = position.coords.latitude;
+            const lat = Math.abs(rawlat);
+            console.log(lat)
+            function angleAtHour(hour) {
+                const slat = Math.sin((lat * Math.PI) / 180);
+                var hr = 15 * hour;
+                var thour = Math.tan((hr * Math.PI) / 180);
+                return ((Math.atan(thour * slat) * 180) / Math.PI).toFixed(2);
+            }
+            clearcanvas1();
+            clearcanvas2();
+            clearcanvas3();
+            ctx.beginPath();
+            ctx.strokeStyle = "#000000";
+            ctx.moveTo(144, 144);
+            ctx.lineTo(144, 0);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(144, 144);
+            ctx.lineTo(0, 144);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(144, 144);
+            ctx.lineTo(288, 144);
+            ctx.stroke();
+            angle = angleAtHour(1);
+            drawAngle(angle)
+            angle = angleAtHour(2);
+            drawAngle(angle)
+            angle = angleAtHour(3);
+            drawAngle(angle)
+            angle = angleAtHour(4);
+            drawAngle(angle)
+            angle = angleAtHour(5);
+            drawAngle(angle)
+            angle = angleAtHour(1);
+            drawAngleLeft(angle)
+            angle = angleAtHour(2);
+            drawAngleLeft(angle)
+            angle = angleAtHour(3);
+            drawAngleLeft(angle)
+            angle = angleAtHour(4);
+            drawAngleLeft(angle)
+            angle = angleAtHour(5);
+            drawAngleLeft(angle)
 
-};
-function sundialAngles(myLat) {  
-  console.log("At 6 am, the angle is -90 degrees")
-for (let i = -5; i <= -1; i++) {
-  let deg =   Math.max(Math.min(myLat, 90), -90);
-  let lat = Math.abs(deg);
-  const slat = Math.sin((lat * Math.PI) / 180);
-  var hr = 15 * i;
-  var thour = Math.tan((hr * Math.PI) / 180);
-  console.log("At "+(i+12)+" am, the angle is "+((Math.atan(thour * slat) * 180) / Math.PI).toFixed(2)+" degrees");
-}
-  console.log("At noon, the angle is 0 degrees")
-for (let i = 1; i <= 5; i++) {
-  let deg =   Math.max(Math.min(myLat, 90), -90);
-  let lat = Math.abs(deg);
-  const slat = Math.sin((lat * Math.PI) / 180);
-  var hr = 15 * i;
-  var thour = Math.tan((hr * Math.PI) / 180);
-  console.log("At "+i+" pm, the angle is "+((Math.atan(thour * slat) * 180) / Math.PI).toFixed(2)+" degrees");
-}  console.log("At 6 pm, the angle is 90 degrees")
-}
+
+            const d = document.getElementById("cut-top");
+            const dtx = d.getContext("2d");
+
+            dtx.beginPath();
+            dtx.strokeStyle = "#FF0000";
+            dtx.moveTo(75, 150);
+            dtx.lineTo(75, 150 - (75 * Math.tan(lat * Math.PI / 180)));
+            dtx.stroke();
+            ctx.beginPath();
+            ctx.strokeStyle = "#FF0000";
+            ctx.moveTo(144, 144);
+            ctx.lineTo(144, 36);
+            ctx.stroke();
+
+            const e = document.getElementById("triangleOne");
+            const etx = e.getContext("2d");
+            var toa = 75 * Math.tan(lat * Math.PI / 180);
+            etx.beginPath();
+            etx.moveTo(15, 15);
+            etx.lineTo(75 + 15, 15);
+            etx.stroke();
+            etx.beginPath();
+            etx.moveTo(15, 0);
+            etx.lineTo(15 + 54, 0);
+            etx.stroke();
+            etx.beginPath();
+            etx.moveTo(15, 0);
+            etx.lineTo(15, 15);
+            etx.stroke();
+            etx.beginPath();
+            etx.moveTo(15 + 54, 15);
+            etx.lineTo(15 + 54, 0);
+            etx.stroke();
+            etx.beginPath();
+            etx.moveTo(75 + 15, 15);
+            etx.lineTo(75 + 15, 15 + toa);
+            etx.stroke();
+            etx.beginPath();
+            etx.moveTo(15, 15);
+            etx.lineTo(75 + 15, 15 + toa);
+            etx.stroke();
+            etx.beginPath();
+            etx.moveTo(75 + 30, 15);
+            etx.lineTo(75 + 30, 15 + toa);
+            etx.stroke();
+            etx.beginPath();
+            etx.moveTo(15 + 75, 15 + toa);
+            etx.lineTo(75 + 30, 15 + toa);
+            etx.stroke();
+            etx.beginPath();
+            etx.moveTo(15 + 75, 15);
+            etx.lineTo(75 + 30, 15);
+            etx.stroke();
+            writeInstructions()
+        })
+
+    };
+    function sundialAngles(myLat) {
+        console.log("At 6 am, the angle is -90 degrees")
+        for (let i = -5; i <= -1; i++) {
+            let deg = Math.max(Math.min(myLat, 90), -90);
+            let lat = Math.abs(deg);
+            const slat = Math.sin((lat * Math.PI) / 180);
+            var hr = 15 * i;
+            var thour = Math.tan((hr * Math.PI) / 180);
+            console.log("At " + (i + 12) + " am, the angle is " + ((Math.atan(thour * slat) * 180) / Math.PI).toFixed(2) + " degrees");
+        }
+        console.log("At noon, the angle is 0 degrees")
+        for (let i = 1; i <= 5; i++) {
+            let deg = Math.max(Math.min(myLat, 90), -90);
+            let lat = Math.abs(deg);
+            const slat = Math.sin((lat * Math.PI) / 180);
+            var hr = 15 * i;
+            var thour = Math.tan((hr * Math.PI) / 180);
+            console.log("At " + i + " pm, the angle is " + ((Math.atan(thour * slat) * 180) / Math.PI).toFixed(2) + " degrees");
+        } console.log("At 6 pm, the angle is 90 degrees")
+    }
 </script>
 <script>
-        setInterval(showTime, 1000);
-        function showTime() {
-            let time = new Date();
-            let hour = time.getHours();
-            let min = time.getMinutes();
-            let sec = time.getSeconds();
+    setInterval(showTime, 1000);
+    function showTime() {
+        let time = new Date();
+        let hour = time.getHours();
+        let min = time.getMinutes();
+        let sec = time.getSeconds();
+        am_pm = "AM";
+
+        if (hour > 12) {
+            hour -= 12;
+            am_pm = "PM";
+        } else if (hour == 12) {
+            am_pm = "PM";
+        } else if (hour == 0) {
+            hr = 12;
             am_pm = "AM";
-  
-            if (hour > 12) {
-                hour -= 12;
-                am_pm = "PM";
-            }
-            if (hour == 0) {
-                hr = 12;
-                am_pm = "AM";
-            }
-  
-            hour = hour < 10 ? "0" + hour : hour;
-            min = min < 10 ? "0" + min : min;
-            sec = sec < 10 ? "0" + sec : sec;
-  
-            let currentTime = hour + ":" 
-                + min + ":" + sec + " "+ am_pm;
-  
-            document.getElementById("clock")
-                .innerHTML = currentTime;
         }
-  
-        showTime();
-    </script>
+
+        hour = hour < 10 ? "0" + hour : hour;
+        min = min < 10 ? "0" + min : min;
+        sec = sec < 10 ? "0" + sec : sec;
+
+        let currentTime = hour + ":"
+            + min + ":" + sec + " " + am_pm;
+
+        document.getElementById("clock")
+            .innerHTML = currentTime;
+    }
+
+    showTime();
+</script>
