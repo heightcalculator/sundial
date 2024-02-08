@@ -33,7 +33,7 @@ function writeInstructions(lat) {
     var y = 10;
     var lineheight = 15;
     var lines = txt.split('\n');
-    ftx.font = "11px Times New Romanx";
+    ftx.font = "13px Times New Roman";
     for (var i = 0; i < lines.length; i++) {
         ftx.fillText(lines[i], x, y + (i * lineheight));
     }
