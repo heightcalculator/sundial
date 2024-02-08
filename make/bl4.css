@@ -1380,6 +1380,10 @@ input {
         background-color: white;
         margin-bottom: 0px;
     }
+    @page {
+        size: portrait;
+        margin-top: 0.5in;
+    }
 }
 
 @media only screen and (max-width: 500px) {
