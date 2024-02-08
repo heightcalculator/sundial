@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link type="text/css" href="bl4.css" rel="stylesheet">
+<script src="Gen.js" async=""></script>
+<script src="SunDialPopEng_V4.js" async=""></script>
+<script src="Geomag.js" async=""></script>
+<meta name="units" content="US/Imperial">
+<html lang="en">
+
+<head>
+
+    <meta name="description"
+        content="Use this free calculator to make a sundial for you in 2 clicks! No sign-up required!" />
+    <title>Aarush Magic Sundial Maker</title>
+</head>
+
+<body>
+    <h1 class="noprint">Aarush Magic Sundial Maker</h1>
+    <div id="everything">
+        <p class="noprint">Make A Sundial By Entering Your Latitude Or Using Your Location!</p>
+        <input class="noprint" type="number" id="latitude" placeholder="Enter Your Latitude" min-value="-90"
+            max="90"><br> <button id="left" class="noprint">Make My Sundial</button><br class="noprint">
+        <button class="noprint" id="right">Or Use My Location</button> <button id="printButton" class="noprint">Print</button><br class="noprint">
+        <input type="checkbox" id="instructions" name="instructions" value="true" class="noprint">
+        <label for="instructions" class="noprint"> Include using instructions</label> <br class="noprint">
+        <input type="checkbox" id="bigSundial" name="bigSundial" value="true" class="noprint">
+        <label for="bigSundial" class="noprint"> Also print bigger sundial</label>
+        <div class="print" id=sundial>
+            <div id=sundial-top>
+                <img id=logo src="logo_transparent.png" alt="Aarush Magic Logo">
+                <div id="sundial-top-top">
+                    <canvas id="cut-top"></canvas>
+                </div>
+            </div>
+
+            <div id=sundial-bottom>
+                <canvas id="canvas"></canvas>
+                <canvas id="cut-bottom"></canvas>
+            </div>
+
+        </div>
+        <div id=triangle class="print">
+            <canvas id="triangleOne"></canvas>
+        </div>
+        <p class="noprint"><b>Instructions:</b> Use a latitude or your location to make a sundial. The print it out on a
+            regular sheet of 8.5x11 piece of paper (cardstock would work better, but it will work with regular paper
+            too). If everything works, the sundial should print as a 6x3 rectangle. Cut it out along with the triangular
+            piece on the bottom. On the sundial, cut along the 2 red lines. Fold the sundial along the middle to make a
+            right angle. Then insert the flaps of the triangle through the cut slot and fold them backwards. Tape or
+            glue them to the back. Lay your sundial flat and point it north to get the time as shown by the shadow
+            created by the triangle! Here's your current time: <span id="clock"></span></p>
+    </div>
+    <a class="noprint" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
+            alt="Creative Commons License" style="border-width:0"
+            src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span style="color: white;"
+        class="noprint">This work is licensed under a </span><a style="color: white;" class="noprint" rel="license"
+        href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike
+        4.0 International License</a>
+
+
+    <div class="hide" onload="Setup();Menu_Select('tdSundialPopE')" tabindex="0" aria-hidden="false">
+        <div style="width:1024px;" class="alwayshide">
+            <select id="ddDiamInches" data-type="Inch" data-from="4" data-to="24" data-val="9" onchange="Calculate()">
+                <option value="9">9"</option>
+            </select>
+            <select id="ddDiamFrac" data-type="Frac" onchange="Calculate()">
+                <option value="0">_</option>
+            </select><br>
+        </div>
+        <canvas id="cnvsDial" width="870" height="609" class="CnvsCenter"></canvas>
+    </div>
+</body>
+
+</html>
