@@ -1,0 +1,185 @@
+<html lang="en">
+
+<head>
+    <title>Printable Paper Sundials</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.4">
+    <link type="text/css" href="bl4.css" rel="stylesheet">
+    <script src="Gen.js" async=""></script>
+    <script src="SunDialPopEng_V4.js" async=""></script>
+    <script src="Geomag.js" async=""></script>
+    <meta name="units" content="US/Imperial">
+</head>
+
+<body onload="Setup();Menu_Select('tdSundialPopE')" tabindex="0" aria-hidden="false">
+    <div style="width:1024px;" class="Main">
+
+        <br>
+        <span class="Hdr1" style="margin-right:20px;">Printable Popup Horizontal Sundials - How to Make a Sundial</span>
+        Print, cut and fold to create a Working Sundial.
+        <br><br>
+        Select <span class="Strng">Hemisphere</span> and enter your <span class="Strng">Latitude</span> to create a
+        printable Pop-up Sundial. Cut and fold to form Sundial.
+        <br><br>
+        <table style="width:100%;">
+            <tbody>
+                <tr>
+                    <td style="width:210px;vertical-align:top;">
+                        <table class="InTable">
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:center;">
+                                        Hemisphere
+                                    </td>
+                                    <td>
+                                        <input type="radio" name="rblHemi" id="rbHemiNorth" checked="checked"
+                                            onclick="Calculate()"> <label for="rbHemiNorth">Northern</label>
+                                        <br>
+                                        <input type="radio" name="rblHemi" id="rbHemiSouth" onclick="Calculate()">
+                                        <label for="rbHemiSouth">Southern</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <hr class="hrThin">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:80px;text-align:center;">
+                                        Latitude
+                                    </td>
+                                    <td>
+                                        <input type="text" id="_txtLat" class="Num" value="33.7" style="width:48px"
+                                            inputmode="decimal">
+                                        <input type="button" id="btnGetMapCoords2" value="Find" onclick="getLat()"
+                                            class="BtnSmall" style="font-size:13px;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;">
+                                        Diameter
+                                    </td>
+                                    <td>
+                                        <select id="ddDiamInches" data-type="Inch" data-from="4" data-to="24"
+                                            data-val="9" onchange="Calculate()">
+                                            <option value="4">4"</option>
+                                            <option value="5">5"</option>
+                                            <option value="6">6"</option>
+                                            <option value="7">7"</option>
+                                            <option value="8">8"</option>
+                                            <option value="9">9"</option>
+                                            <option value="10">10"</option>
+                                            <option value="11">11"</option>
+                                            <option value="12">12"</option>
+                                            <option value="13">13"</option>
+                                            <option value="14">14"</option>
+                                            <option value="15">15"</option>
+                                            <option value="16">16"</option>
+                                            <option value="17">17"</option>
+                                            <option value="18">18"</option>
+                                            <option value="19">19"</option>
+                                            <option value="20">20"</option>
+                                            <option value="21">21"</option>
+                                            <option value="22">22"</option>
+                                            <option value="23">23"</option>
+                                            <option value="24">24"</option>
+                                        </select>
+                                        <select id="ddDiamFrac" data-type="Frac" onchange="Calculate()">
+                                            <option value="0">_</option>
+                                            <option value="2" title="0.063&quot;">1/16</option>
+                                            <option value="4" title="0.125&quot;">1/8</option>
+                                            <option value="6" title="0.188&quot;">3/16</option>
+                                            <option value="8" class="FracOpt" title="0.25&quot;">1/4</option>
+                                            <option value="10" title="0.313&quot;">5/16</option>
+                                            <option value="12" title="0.375&quot;">3/8</option>
+                                            <option value="14" title="0.438&quot;">7/16</option>
+                                            <option value="16" class="FracOpt" title="0.5&quot;">1/2</option>
+                                            <option value="18" title="0.563&quot;">9/16</option>
+                                            <option value="20" title="0.625&quot;">5/8</option>
+                                            <option value="22" title="0.688&quot;">11/16</option>
+                                            <option value="24" class="FracOpt" title="0.75&quot;">3/4</option>
+                                            <option value="26" title="0.813&quot;">13/16</option>
+                                            <option value="28" title="0.875&quot;">7/8</option>
+                                            <option value="30" title="0.938&quot;">15/16</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="text-align:center;">
+                                        <div class="Tooltip help">?
+                                            <div class="Tooltiptext">Make Gnomon square at end.<br>(may require larger
+                                                paper size)</div>
+                                        </div>
+                                        <label for="cbSqGnom">Square Gnomon</label>
+                                        <input type="checkbox" id="cbSqGnom" onclick="Calculate()">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="text-align:center;">
+                                        <input type="button" value="Calculate" onclick="Calculate()" class="Btn"
+                                            style="margin-left:12px;">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div class="Row">
+                            <div class="Col1">
+                                The Gnomon on your sundial needs to point to True North in the Northern Hemisphere, or
+                                True South in the Southern Hemisphere.
+                                <br>
+
+                                Hit <span class="Strng">Find</span> then click your location on the map to
+                                calculate your Latitude and auto adjust sundial template.
+                                This will also display the Declination Angle for your selected location, to align the
+                                gnomon True North or South line.
+                            </div>
+                            <div class="Col2">
+                                Align the Gnomon with this Declination Angle to 'Set' the time.
+                                <br>
+
+                                Drag the <span class="Strng">Latitude</span> slider to see how the sundial markings
+                                change for different Latitudes.
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+
+        Latitude <input type="range" id="rngLat" min="10" max="90" step="0.1" value="37.4"
+            onchange="rngLat_Change(this)" style="width:280px;margin-right:30px;"
+            title="Drag close, then use Keyboard Cursor Keys to Fine Tune">
+        Diameter <input type="range" id="rngDiam" min="192" max="768" step="2" value="288"
+            onchange="rngDiam_Change(this)" style="width:280px;"
+            title="Drag close, then use Keyboard Cursor Keys to Fine Tune">
+        <br><br>
+    </div>
+    <canvas id="cnvsDial" width="870" height="609" class="CnvsCenter" title="Letter or A4 Landscape"></canvas><a class="BtnSmall" style="margin-left:48%" id = "downloadButton">Print ↑</a>
+    <br>
+    <br>
+    <p style="text-align: center;">The idea for this sundial is by <a href="https://www.blocklayer.com/">Block Layer</a> and all credit goes to the creator of that site</p>
+    </table>
+</body>
+<script>
+    function getLat() {
+        navigator.geolocation.getCurrentPosition(position => {
+            const rawlat = Math.abs(Math.round(position.coords.latitude * 10) / 10)
+            console.log(rawlat)
+            document.getElementById('_txtLat').value = rawlat
+        })
+    }
+    function myLat() {
+        navigator.geolocation.getCurrentPosition(position => {
+            const rawlat = Math.abs(Math.round(position.coords.latitude * 10) / 10)
+        })
+    }
+    function download() {
+        document.execCommand('print', false, null)
+    }
+    document.getElementById("downloadButton").addEventListener("click", download);
+</script>
+
+</html>
