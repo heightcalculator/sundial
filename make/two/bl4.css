@@ -1364,21 +1364,35 @@ input {
 .CnvsCenter {
     display: none;
 }
-#sundial{
+
+#sundial {
     display: none;
 }
-#triangle{
+
+#triangle {
     display: none;
 }
-#right{
+
+#right {
     border: none;
     background: none;
 }
+
 @media print {
     .noprint {
         display: none;
     }
 
+    #pocketSundial:checked ~ #sundial {
+        display: block;
+    }
+    #pocketSundial:checked ~ #triangle {
+        display: block;
+    }
+    #bigSundial:checked ~ .CnvsCenter {
+        display: block;
+    }
+    
     body {
         background-color: white;
         background-image: none;
@@ -1394,15 +1408,19 @@ input {
         padding-right: 0px;
         background-color: white;
         margin-bottom: 0px;
+        width: 100%;
     }
 
-    i{
+    i {
         display: none;
     }
-
+    #right{
+        display: none;
+    }
     @page {
         size: portrait;
         margin-top: 0.5in;
+        
     }
 
 }
