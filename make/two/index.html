@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link type="text/css" href="bl4.css" rel="stylesheet">
+<script src="Gen.js" async=""></script>
+<script src="SunDialPopEng_V4.js" async=""></script>
+<script src="Geomag.js" async=""></script>
+<script src="https://kit.fontawesome.com/065da42f1a.js" crossorigin="anonymous"></script>
+<meta name="units" content="US/Imperial">
+<html lang="en">
+
+<head>
+
+    <meta name="description"
+        content="Use this free calculator to make a sundial for you in 2 clicks! No sign-up required!" />
+    <title>Aarush Magic Sundial Maker</title>
+</head>
+
+<body>
+    <h1 class="noprint">Aarush Magic Sundial Maker</h1>
+    <div id="everything">
+        <p class="noprint">Make A Sundial By Entering Your Latitude Or Using Your Location!</p>
+        <input class="noprint" type="number" id="latitude" placeholder="Enter Your Latitude" min-value="-90" max="90">   <i
+            class="noprint fa-solid fa-location-crosshairs" id="right"></i>
+        <br class="noprint">
+        <button id="left" class="noprint">Make My Sundial</button><br class="noprint">
+        <input type="checkbox" id="pocketSundial" name="pocketSundial" value="true" class="noprint">
+        <label for="pocketSundial" class="noprint"> Print Pocket Sundial</label><br class="noprint">
+        <input type="checkbox" id="bigSundial" name="bigSundial" value="true" class="noprint">
+        <label for="bigSundial" class="noprint"> Print Bigger Sundial</label><br class="noprint">
+        <input type="checkbox" id="instructions" name="instructions" value="true" class="noprint">
+        <label for="instructions" class="noprint"> Include using instructions</label>
+        <div class="print" id="sundial">
+            <div id=sundial-top>
+                <img id=logo src="logo_transparent.png" alt="Aarush Magic Logo">
+                <div id="sundial-top-top">
+                    <canvas id="cut-top"></canvas>
+                </div>
+            </div>
+
+            <div id=sundial-bottom>
+                <canvas id="canvas"></canvas>
+                <canvas id="cut-bottom"></canvas>
+            </div>
+
+        </div>
+        <div id="triangle" class="print">
+            <canvas id="triangleOne"></canvas>
+        </div>
+        <p class="noprint"><b>Instructions:</b> Use a latitude or your location to make a sundial. The print it out on a
+            regular sheet of 8.5x11 piece of paper (cardstock would work better, but it will work with regular paper
+            too).<br>
+            The <b>pocket sundial</b> sundial should print as a 6"x3" rectangle. Cut it out along with the triangular
+            piece on the bottom (called the Gnomon). On the sundial, cut along the 2 red lines. Fold the sundial along the middle to make a
+            right angle. Then insert the flaps of the Gnomon through the cut slot and fold them backwards. Tape or
+            glue them to the back. Place the Sundial flat and level, with the Gnomon (triangle) pointing toward True North if you're in the Northern hemisphere, or True South for the Southern hemisphere.<br>
+            The <b>bigger sundial</b> should print as a part of a circle with a "slice" taken out. Cut around the outer edge of the Sundial diagram. Fold the center vertical line up, and the 2 True North or True South lines down to create a triangle (called the Gnomon) that stands vertically from the horizontal paper sundial face. Make sure the Gnomon stands vertically, at right angles to the sundial face.
+            Place the Sundial flat and level, with the Gnomon (triangle) pointing toward True North if you're in the Northern hemisphere, or True South for the Southern hemisphere.<br>
+            Here's your current time: <span id="clock"></span></p>
+    </div>
+    <a class="noprint" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
+            alt="Creative Commons License" style="border-width:0"
+            src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span style="color: white;"
+        class="noprint">This work is licensed under a </span><a style="color: white;" class="noprint" rel="license"
+        href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike
+        4.0 International License</a>
+
+
+    <div class="hide" onload="Setup();Menu_Select('tdSundialPopE')" tabindex="0" aria-hidden="false">
+        <div style="width:1024px;" class="alwayshide">
+            <select id="ddDiamInches" data-type="Inch" data-from="4" data-to="24" data-val="7.5" onchange="Calculate()">
+                <option value="7.5">7.5"</option>
+            </select>
+            <select id="ddDiamFrac" data-type="Frac" onchange="Calculate()">
+                <option value="0">_</option>
+            </select><br>
+        </div>
+        <canvas id="cnvsDial" width="870" height="609" class="CnvsCenter" style="margin-top: 0%"></canvas>
+    </div>
+</body>
+
+</html>
