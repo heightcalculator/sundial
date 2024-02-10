@@ -1,5 +1,4 @@
 var isNorth, thisLat, thisLng, declin, compDangle, dispDeclin; function Setup() { SetImperialSelect(); Calculate(); Convert(); SetNumeric(); SetAnimFrame() }
-window.onload = document.getElementById("pocketSundial").checked = true;
 function Calculate(f = !1) {
     let signedLat = Math.max(Math.min(document.getElementById("latitude").value, 90), -90);
     const newLat = Math.abs(signedLat);
