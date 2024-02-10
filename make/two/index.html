@@ -4,10 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/1789/1789147.png">
 <link type="text/css" href="bl4.css" rel="stylesheet">
-<script src="Gen.js" async=""></script>
-<script src="SunDialPopEng_V4.js" async=""></script>
-<script src="Geomag.js" async=""></script>
 <script src="https://kit.fontawesome.com/065da42f1a.js" crossorigin="anonymous"></script>
 <meta name="units" content="US/Imperial">
 <html lang="en">
@@ -24,7 +22,7 @@
     <div id="everything">
         <p class="noprint">Make A Sundial By Entering Your Latitude Or Using Your Location!</p>
         <input class="noprint" type="number" id="latitude" placeholder="Enter Your Latitude" min-value="-90" max="90">
-        <i class="noprint fa-solid fa-location-crosshairs" id="right" title="Click to use your location"></i>
+        <i class="noprint fa-solid fa-location-crosshairs" id="right"></i>
         <br class="noprint">
         <button id="left" class="noprint">Make My Sundial</button><br class="noprint">
         <input type="checkbox" id="pocketSundial" name="pocketSundial" value="true" checked="checked" class="noprint">
@@ -94,3 +92,332 @@
 </body>
 
 </html>
+<script>
+    var RAD = Math.PI / 180, RAD90 = Math.PI / 2, RAD180 = Math.PI, RAD270 = 1.5 * Math.PI, RAD360 = 2 * Math.PI, CON_MM3_M3 = 1E9, CON_32ND3_FT3 = 56623104, _isMobile = "ontouchstart" in window || 0 < navigator.maxTouchPoints, _canStore = "localStorage" in window && null !== window.localStorage; function Menu_Select(a) { $(a).className = "menu-selected" }
+    window.addEventListener("load", function () { SetTitles(); var a, b = document.querySelectorAll("[type='range']"); for (a = 0; a < b.length; a++)null !== b[a].onchange && (b[a].oninput = b[a].onchange), b[a].addEventListener("keypress", c => { c.preventDefault() }), b[a].addEventListener("contextmenu", c => { c.currentTarget.type = "range" === c.currentTarget.type ? "number" : "range"; c.preventDefault() }); (new Image).src = ""; $("__ddSavedCalcs") && _ShowSaved(); _isMobile && $("divMobile") && ($("divMobile").style.display = "block") });
+    function SetCookie(a, b, c = 365) { var d = new Date; d.setDate(d.getDate() + c); document.cookie = a + "=" + b + "; expires=" + d.toUTCString() + "; path=/" } function GetCookie(a) { a += "="; for (var b = document.cookie.split(";"), c = 0; c < b.length; c++) { for (var d = b[c]; " " === d.charAt(0);)d = d.substring(1); if (0 === d.indexOf(a)) return d.substring(a.length, d.length) } return "" } function $(a) { return document.getElementById(a) }
+    function SetTitles() { for (var a = 0; a < document.images.length; a++)0 < document.images[a].alt.length && (document.images[a].title = document.images[a].alt) } function SetInput() { SetNumeric() } function SetNumeric() { for (var a = document.querySelectorAll(".Num, .NumAbs"), b = 0; b < a.length; b++) { var c = a[b]; _isMobile ? c.inputMode = c.id.startsWith("_") ? "decimal" : "numeric" : c.onkeydown = CheckNumeric } }
+    function CheckNumeric(a) { var b = a.key; if (/^(n_|__)/.test(a.target.id) && "-" === b && 0 === a.target.value.length || 0 === a.target.id.indexOf("_") && "." === b && -1 === a.target.value.indexOf(".") || "Space" != a.code && 0 <= b && 10 > b || "Backspace" === b || "Delete" === b) return !0; a.preventDefault() } var isValid = !0, _aLastValid = [];
+    function parseCheck(a, b, c, d, e = !1) {
+        var f = $(a), g = parseFloat(f.value); if (isNaN(g) && (0 === c || e) || 0 === g && e) return f.value = e ? "" : "0", 0; if (isNaN(g) || g < c || g > d) b = b + " must be between " + c + " and " + d, e && (b += ", or leave empty"), $(a + "_Devil") ? (f.focus(), f.select()) : (e = _GetScreenCoords(f), f.focus(), f.select(), alert(b)), isValid = !1; else return $(a + "_Devil") && document.body.removeChild($(a + "_Devil")), _aLastValid[a] = g
+    }
+    function ConvertTo32ndsC(a, b, c, d, e) {
+        a = $(a); e = a.value.trim(); var f = 0; if (0 === e.length) return 0; if (-1 < e.indexOf(".")) /\s/.test(e) && (e = e.replace(/\s/g, ""), a.value = e), f = 32 * e; else { -1 < e.indexOf("/") && (e = e.replace(/(\s+)?\/(\s+)?/g, " ")); var g = e.split(/\s+/g); 1 === g.length ? f = 32 * e : 2 === g.length && 1 < g[1] ? f = 32 / g[1] * g[0] : 3 === g.length && (f = 32 * g[0], f += 32 / g[2] * g[1]) } if (isNaN(f)) return alert("Invalid Entry"), a.focus(), a.select(), 0; if (f < c || f > d) b = b + " must be between " + ConEng(c, !1, 32) + " and " + ConEng(d, !1, 32), alert(b), a.focus(),
+            a.select(), isValid = !1; else return f
+    } function Get32nds(a, b, c) { var d = 0; null !== a && (d += 384 * parseFloat($(a).value)); null !== b && (d += 32 * parseFloat($(b).value)); null !== c && (d += parseFloat($(c).value)); return d } function SetEnter() { document.onkeydown = SetCalcEnter } function SetCalcEnter(a) { "Enter" === a.key && Calculate() } function Bind(a, b, c, d) { null !== a && BindFeet(a, d); null !== b && BindInch(b, d); null !== c && BindFrac(c, d) } function BindFeet(a, b) { a = $(a); a.selectedIndex = Math.floor(b / 384) - parseInt(a.options[0].value) }
+    function BindInch(a, b) { a = $(a); var c = parseInt(a.options[0].value), d = parseInt(a.options[a.length - 1].value); a.selectedIndex = 0 === c && 11 === d ? Math.floor(b / 32 % 12) : Math.floor(b / 32) % (d + 1) - c } function BindFrac(a, b) { a = $(a); a.selectedIndex = Math.floor(b % 32) / (32 / a.length) } top.location !== self.location && (top.location = self.location); var conMet = !1, _isConDec = !1, _conDecPrec = 2, _den = 32;
+    function ConEng(a, b = !1, c = _den, d = !1) {
+        if (0 === a) return "0"; if (conMet) return Math.round(.79375 * a).toString(); if (_isConDec) return RoundTo(a / 32, _conDecPrec) + '"'; 32 !== c && (a *= c / 32); var e = !1; 0 > a && (a = Math.abs(a), e = !0); var f = Math.round(a); a = 0; b ? (a = Math.floor(f / (12 * c)), b = Math.floor(f / c) % 12) : b = Math.floor(f / c); if (3 === c) f = Math.round(f % 3); else for (f %= c; 0 === f % 2 && 1 < f;)f /= 2, c /= 2; var g = ""; 0 < a && (g = CommaFormat(a) + "'"); 0 < a && (0 < b || 0 < f) && (g += "- "); 0 < b && (g += CommaFormat(b)); 0 < b && 0 < f && (g += d ? " " : "~"); 0 < f && (c = f.toString() + "/" +
+            c.toString(), d && (c = "<sup>" + c.replace("/", "</sup>/<sub>") + "</sub>"), g += c); if (0 < b || 0 < f) g += '"'; 0 === g.length && (g = "0"); e && (g = "-" + g); return g
+    } function CommaFormat(a) { a = a.toString().split("."); a[0] = a[0].replace(/\B(?=(\d{3})+(?!\d))/g, ","); return a.join(".") } function FormatCurrency(a) { a = isNaN(a) || "" === a || null === a ? 0 : a; a = parseFloat(a).toFixed(2).split("."); return CommaFormat(a[0]) + "." + a[1] } function RoundTo(a, b) { if (0 === b) return Math.round(a); b = Math.pow(10, b); return Math.round(a * b) / b }
+    function FindPos(a) { var b = 0, c = 0; if (a.offsetParent) { do b += a.offsetLeft, c += a.offsetTop; while (a = a.offsetParent) } return { top: c, left: b } }
+    ; function ShowEl(a, b) { $(a).style.display = b ? "block" : "none" } function SetText(a, b) { $(a).innerHTML = b }
+    function GetState() { for (var a = "", b = $("form1"), c = /text|number|decimal|range|hidden|color/, d = /radio|checkbox/, e = 0; e < b.length; e++)if (-1 === b[e].id.indexOf("__")) { var f = b[e]; c.test(f.type) ? a += f.id + ":" + ("" === f.value ? "0" : f.value) + "," : d.test(f.type) ? a += f.id + (f.checked ? ":1" : ":0") + "," : "select-one" === f.type && (a += f.id + ":" + f.selectedIndex + ",") } a = a.substring(0, a.length - 1); return encodeURIComponent(a) }
+    function RestoreFromQs() { const a = new URLSearchParams(window.location.search); a.get("frm") && LoadForm(decodeURIComponent(a.get("frm"))) } function LoadForm(a) { if (null !== a && 0 < a.length) { var b = /text|number|range|hidden|color/, c = /radio|checkbox/; a = decodeURIComponent(a).split(","); for (var d = 0, e = 0; e < a.length; e++)try { var f = a[e].split(":"); if (0 < f[0].length) { var g = $(f[0]); b.test(g.type) ? g.value = f[1] : c.test(g.type) ? g.checked = "1" === f[1] ? "true" : "" : "select-one" === g.type && (g.selectedIndex = f[1]) } } catch (k) { d++ } } }
+    function IsMobile() { return "ontouchstart" in window || 0 < navigator.maxTouchPoints } var _regFormatRunHoriz = /<br>/g, _regFormatRunVert = /, /g;
+    function FormatRun(a) { var b = a.innerHTML; -1 < b.indexOf(",") ? (b = b.replace(_regFormatRunVert, "<br>"), a.style.fontSize = "150%", a.style.lineHeight = "150%") : (b = b.replace(_regFormatRunHoriz, ", "), a.style.fontSize = "", a.style.lineHeight = ""); a.innerHTML = b } function ExplainImperial() { alert("Enter measurements in Inches as either decimal or fraction with a space between inches and fraction, and a space or / in fraction.\n\neg:\n\n18.75\n18 3/4\n18 3 4\n\nare all equal to 18 and 3 quarter inches.") }
+    function OverrideLine() { CanvasRenderingContext2D.prototype._lineTo = CanvasRenderingContext2D.prototype.lineTo; CanvasRenderingContext2D.prototype.lineTo = function (a, b) { a = Math.floor(a) + .5; b = Math.floor(b) + .5; this._lineTo(a, b) }; CanvasRenderingContext2D.prototype._moveTo = CanvasRenderingContext2D.prototype.moveTo; CanvasRenderingContext2D.prototype.moveTo = function (a, b) { a = Math.floor(a) + .5; b = Math.floor(b) + .5; this._moveTo(a, b) } }
+    function OverrideRect() { CanvasRenderingContext2D.prototype._strokeRect = CanvasRenderingContext2D.prototype.strokeRect; CanvasRenderingContext2D.prototype.strokeRect = function (a, b, c, d) { a = Math.floor(a) + .5; b = Math.floor(b) + .5; this._strokeRect(a, b, Math.round(c), Math.round(d)) }; CanvasRenderingContext2D.prototype._fillRect = CanvasRenderingContext2D.prototype.fillRect; CanvasRenderingContext2D.prototype.fillRect = function (a, b, c, d) { a = Math.floor(a) + .5; b = Math.floor(b) + .5; this._fillRect(a, b, Math.round(c), Math.round(d)) } }
+    function _Pa(a) { return Math.floor(a) + .5 } function RunList(a) { a = encodeURIComponent($(a).innerHTML.replace(/<br>/g, ",").replace(/(<([^>]+)>|\s|&nbsp;)/ig, "").replace(/[\s]?to[\s]?/g, ",")); 2040 < a.length ? alert("Too many entries") : window.open("/run-list?rd=" + a) } String.prototype.toHHMMSS = function () { var a = parseInt(this, 10), b = Math.floor(a / 3600), c = Math.floor((a - 3600 * b) / 60); a = a - 3600 * b - 60 * c; 10 > b && (b = "0" + b); 10 > c && (c = "0" + c); 10 > a && (a = "0" + a); return b + ":" + c + ":" + a };
+    String.prototype.TrimEnd = function (a) { return this.length >= a ? this.substring(0, this.length - a) : "" }; Array.prototype.formatRunMet = function (a) { a = a || ", "; for (var b = "", c = 0; c < this.length; c++)b += Math.round(this[c]) + a; return b.TrimEnd(a.length) }; Array.prototype.formatRunImp = function (a, b) { b = b || ", "; for (var c = "", d = 0; d < this.length; d++)c += ConEng(this[d], a, 32) + b; return c.TrimEnd(b.length) }; Number.prototype.between = function (a, b) { var c = Math.max(a, b); return this > Math.min(a, b) && this < c };
+    function _PrintAllCanvas() { window.open("/canvas-pdf", "PDF Print") } function ColorInc(a, b) { a = parseInt(a, 16); var c = Math.round(2.55 * b); b = (a >> 16) + c; var d = (a >> 8 & 255) + c; a = (a & 255) + c; return "#" + (16777216 + 65536 * (255 > b ? 1 > b ? 0 : b : 255) + 256 * (255 > d ? 1 > d ? 0 : d : 255) + (255 > a ? 1 > a ? 0 : a : 255)).toString(16).slice(1) } function GetPrintedScale(a, b, c) { return b / (a * (c ? 96 / 25.4 : 3)) }
+    function GetSpokenImp(a, b) {
+        var c = a; isNaN(c) || (c = ConEng(a, b, 32)); -1 < c.indexOf("'") && -1 < c.indexOf("/") && -1 === c.indexOf("~") && (c = c.replace("-", " and ")); c = c.replace("'", " feet "); c = c.replace("~", " and "); if (-1 < c.indexOf("/")) { a = c.substring(c.indexOf("/")); a = a.substring(0, a.indexOf('"')); b = ""; switch (a) { case "/2": b = " half"; break; case "/4": b = " quarter"; break; case "/8": b = " eighth"; break; case "/16": b = " sixteenths"; break; case "/32": b = " thirty seconds"; break; case "/64": b = " sixty fourths" }c = c.replace(a, b) } c =
+            c.replace('"', " inches"); return c.replace("-", " ")
+    } function _GetSpokenMetric(a) { if (3 < a.length) { a = CommaFormat(a); var b = a.split(","); 3 > b.length && (a = "1" === b[0] ? b[0] + " Meter " : b[0] + " Meters ", b = parseInt(b[1]), 0 < b && (100 > b && (a += " and "), a += b)) } return a }
+    function SetImperialSelect() {
+        for (var a = document.getElementsByTagName("select"), b = 0; b < a.length; b++) {
+            var c = a[b]; if (c.hasAttribute("data-type")) {
+                var d, e = parseInt(c.getAttribute("data-from")) || 0, f = parseFloat(c.getAttribute("data-val")) || 0, g = c.getAttribute("data-type"); if ("Frac" === g) {
+                    g = parseInt(c.getAttribute("data-inc")) || 16; var k = 32 / g; var m = parseInt(c.getAttribute("data-to")) || g - 1; 0 === e && (c.options[0] = new Option("_", 0), e = 1); for (d = e; d <= m; d++) {
+                        e = ConEng(d * k, !1, 32).TrimEnd(1); 0 === d % g && (e += '"'); var h = new Option(e,
+                            d * k); 0 === d % 4 && (h.className = "FracOpt"); h.title = RoundTo(d * k / 32, 3) + '"'; c.options[c.options.length] = h
+                    } c.selectedIndex = f
+                } else { m = parseFloat(c.getAttribute("data-to")) || 11; k = parseFloat(c.getAttribute("data-inc")) || 1; var l = ""; "Inch" === g ? l = '"' : "Feet" === g ? l = "'" : "Num" === g && (l = c.getAttribute("data-unit") || ""); for (d = e; d <= m; d += k)h = RoundTo(d, 4), h = new Option(0 === d ? "_" : h + l, h), c.options[c.options.length] = h, "Feet" === g && (h.title = 12 * d + '"'); c.selectedIndex = (f - e) / k }
+            }
+        }
+    }
+    function MinMax(a, b, c) { return Math.min(Math.max(a, b), c) } var _regFormatMetric = /(^|>|\s|\$)([\d\.,:]+)/g; function FormatMetric(a = " ") { return a.toString().replace(_regFormatMetric, "$1<span class='Atn'>$2</span>") } var _regFormatImp = /(^|>|\s|\$)([\.?\d]+['"\.-\s\d\/~:,]+)/g; function FormatImp(a) { return a.replace(_regFormatImp, "$1<span class='Atn'>$2</span>") }
+    function _GetScreenCoords(a) { for (var b = 0, c = 0; a !== document.body;)b += a.offsetLeft - a.scrollLeft + a.clientLeft, c += a.offsetTop - a.scrollTop + a.clientTop, a = a.offsetParent; return { x: b, y: c } } function GetUrlQR() { if ("undefined" === typeof QRCode) { var a = document.createElement("script"); a.setAttribute("type", "text/javascript"); document.getElementsByTagName("head")[0].appendChild(a); a.onload = ShowUrlQR } else ShowUrlQR() }
+    function _CopyAllCanvas() {
+        if (0 === g_cnvss) { g_aCnvs = document.getElementsByTagName("canvas"); g_cnvss = g_aCnvs.length; var a = $("divCopyCanvas"); document.body.appendChild(a.parentNode.removeChild(a)); a.style.display = "block" } if (50 > $("divCopyCanvasAll").children.length) {
+            for (a = 0; a < g_cnvss; a++) {
+                var b = g_aCnvs[a], c = document.createElement("canvas"), d = c.getContext("2d"); c.width = b.width; c.height = b.height; d.drawImage(b, 0, 0); c.title = "Click to remove"; c.setAttribute("onclick", "$('divCopyCanvasAll').removeChild(this)");
+                $("divCopyCanvasAll").appendChild(c)
+            } 0 === $("divCopyCanvasAll").children.length ? alert("No diagrams on this page to copy") : $("divCopyCanvas").scrollIntoView()
+        } else alert("Max 50 copies")
+    } function _ClearAllCopyCanvas() { $("divCopyCanvasAll").innerHTML = ""; $("divCopyCanvas").style.display = "none"; g_cnvss = 0 } var _isSpiritLevel = !1;
+    function _GetPageFit(a, b, c = !1) {
+        var d = 96 / 25.4; a /= d; b /= d; if (279 > a && 215 > b) { d = "Letter"; 210 > b && (d += " or A4"); var e = "l" } else 215 > a && 279 > b ? (d = "Letter", 210 > a && (d += " or A4"), e = "p") : 297 > a && 210 > b ? (d = "A4", e = "l") : 210 > a && 297 > b ? (d = "A4", e = "p") : 420 > a && 297 > b ? (d = "A3", e = "l") : 297 > a && 420 > b ? (d = "A3", e = "p") : 594 > a && 420 > b ? (d = "A2", e = "l") : 420 > a && 594 > b ? (d = "A2", e = "p") : 841 > a && 594 > b ? (d = "A1", e = "l") : 594 > a && 841 > b ? (d = "A1", e = "p") : 1189 > a && 841 > b ? (d = "A0", e = "l") : 841 > a && 1189 > b ? (d = "A0", e = "p") : 1414 > a && 1E3 > b ? (d = "B0", e = "l") : 1E3 > a && 1414 > b ? (d = "B0",
+            e = "p") : (d = "B0+", e = a > b ? "l" : "p"); return d + ("l" === e ? " Landscape" : " Portrait") + (c ? " - " + Math.round(a) + " x " + Math.round(b) : "")
+    };
+</script>
+<script>var isNorth, thisLat, thisLng, declin, compDangle, dispDeclin; function Setup() { SetImperialSelect(); Calculate(); Convert(); SetNumeric(); SetAnimFrame() }
+    function Calculate(f = !1) {
+        let signedLat = Math.max(Math.min(document.getElementById("latitude").value, 90), -90);
+        const newLat = Math.abs(signedLat);
+        isValid = !0; var k = newLat; if (isValid) {
+            var v = Get32nds(null, "ddDiamInches", "ddDiamFrac"), r = signedLat >= 0 ? true : false, w = false, n = false, b = v / 2, h = k * RAD, E = Math.sin(h), a = n ? b / Math.cos(h) - b : 0, F = 3.75 * RAD, p = $("cnvsDial"), u = 3 * v; p.width = u + 6; b *= 3; var e = p.width / 2, D = b + Math.sin(h) * b, l = 3 * a; p.height = n ? D + l + 16 : D + 16; a = p.getContext("2d"); a.save(); a.translate(0, 2 + l); var m = RAD270 + h, q = RAD270 - h; a.beginPath(); if (n) {
+                a.arc(e, b, b, RAD180 - h, RAD270 -
+                    h, !1); var d = e + Math.cos(RAD270 - h) * b; var c = b + Math.sin(RAD270 - h) * b; a.moveTo(d, c); a.lineTo(e, -l); d = e + Math.cos(RAD270 + h) * b; a.lineTo(d, c); a.arc(e, b, b, RAD270 + h, h, !1)
+            } else a.arc(e, b, b, RAD180 - h, h, !1); a.lineTo(e, b); d = e + Math.cos(RAD180 - h) * b; c = b + Math.sin(RAD180 - h) * b; a.lineTo(d, c); a.strokeStyle = w ? "#677" : "#000"; a.stroke(); w && (a.fillStyle = a.createPattern($("imgMarble"), "repeat"), a.fill()); a.beginPath(); a.moveTo(e, n ? -l : 0); a.lineTo(e, b); d = e + Math.cos(q) * b; c = b + Math.sin(q) * b; a.lineTo(d, c); a.moveTo(e, b); d = e + Math.cos(m) *
+                b; c = b + Math.sin(m) * b; a.lineTo(d, c); n = u / 50; a.font = n + "px Verdana"; a.textBaseline = "middle"; a.textAlign = "center"; a.fillStyle = "#000"; u = .05 * b; l = .7 * b; var y = l + 2 * n, z = l + n, A = .84 * b, B = .9 * b; a.textAlign = "center"; a.textBaseline = "middle"; for (var g, t = 1; 24 > t; t++) {
+                    var C = t / 4; var x = Math.atan(Math.tan(t * F) * E); d = m + x; g = Math.cos(d); c = Math.sin(d); 0 === t % 4 ? (a.moveTo(e + g * u, b + c * u), a.lineTo(e + g * l, b + c * l), a.moveTo(e + g * y, b + c * y), a.save(), a.translate(e + g * z, b + c * z), a.rotate(RAD90 + d), a.fillText(r ? C : 12 - C, 0, 0), a.restore()) : 0 === t % 2 ? a.moveTo(e +
+                        g * A, b + c * A) : a.moveTo(e + g * B, b + c * B); d = e + g * b; c = b + c * b; a.lineTo(d, c); d = q - x; g = Math.cos(d); c = Math.sin(d); 0 === t % 4 ? (a.moveTo(e + g * u, b + c * u), a.lineTo(e + g * l, b + c * l), a.moveTo(e + g * y, b + c * y), a.save(), a.translate(e + g * z, b + c * z), a.rotate(RAD90 + d), a.fillText(r ? 12 - C : C, 0, 0), a.restore()) : 0 === t % 2 ? a.moveTo(e + g * A, b + c * A) : a.moveTo(e + g * B, b + c * B); d = e + g * b; c = b + c * b; a.lineTo(d, c)
+                } a.strokeStyle = w ? "#444" : "#000"; a.stroke(); x = Math.atan(Math.tan(24 * F) * E); d = m + x; g = Math.cos(d); c = Math.sin(d); a.textBaseline = "bottom"; a.save(); a.translate(e + g * l, b +
+                    c * l); a.rotate(RAD90 + d); a.textAlign = "right"; a.fillText(" 6 ", 0, 0); a.restore(); a.save(); a.translate(e + .6 * g * b, b + .6 * c * b); a.rotate(d); a.font = 1.2 * n + "px Verdana"; a.fillText(r ? "PM" : "AM", 0, 0); a.restore(); d = q - x; g = Math.cos(d); c = Math.sin(d); a.save(); a.translate(e + g * l, b + c * l); a.rotate(RAD90 + d); a.textAlign = "left"; a.fillText(" 6 ", 0, 0); a.restore(); a.save(); a.translate(e + .6 * g * b, b + .6 * c * b); a.rotate(RAD180 + d); a.font = 1.2 * n + "px Verdana"; a.fillText(r ? "AM" : "PM", 0, 0); a.restore(); d = e + Math.cos(m) * (b - 10); c = b + Math.sin(m) * (b -
+                        10); a.font = "12px Verdana"; a.save(); a.textAlign = "right"; a.translate(d, c); a.rotate(m); a.fillText("True " + (r ? "North" : "South") + " \u2192", 0, 0); a.restore(); d = e + .45 * Math.cos(m) * b; c = b + .45 * Math.sin(m) * b; a.save(); a.textAlign = "center"; a.translate(d, c); a.rotate(m); a.fillText("aarushmagic.com", 0, 0); a.restore(); d = e + Math.cos(q) * (b - 10); c = b + Math.sin(q) * (b - 10); a.save(); a.textAlign = "left"; a.translate(d, c); a.rotate(-m); a.fillText("\u2190 True " + (r ? "North" : "South"), 0, 0); a.restore(); d = e + .45 * Math.cos(q) * b; c = b + .45 * Math.sin(q) *
+                            b; a.save(); a.textAlign = "center"; a.translate(d, c); a.rotate(-m); a.fillText("aarushmagic.com", 0, 0); a.restore(); w = 16 / Math.tan(h) + 20; d = e + Math.cos(q) * w; c = b + Math.sin(q) * w; a.save(); a.translate(d, c); a.rotate(-m); a.fillText(k + "\u00b0", 0, 0); a.restore(); a.restore(); a.textAlign = "left"; a.font = "14px Verdana"; a.textBaseline = "top"; a.fillText("Latitude " + k + "\u00b0 " + (r ? "North" : "South"), 2, 0); f && (a.fillText("Longitude " + Math.abs(RoundTo(thisLng, 2)) + "\u00b0 " + (0 < thisLng ? "East" : "West"), 2, 24), a.fillText("Compass " + RoundTo(compDangle,
+                                1) + "\u00b0", 2, 48)); a.font = "14px Verdana"; a.textAlign = "center"; a.textBaseline = "bottom"; a.fillStyle = "#00f"; p.title = _GetPageFit(p.width, p.height); $("rngLat").value = k; $("rngDiam").value = v
+        }
+    }
+    function isMobile() {
+        const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+        return regex.test(navigator.userAgent);
+    }
+
+    const c = document.getElementById("canvas");
+    const ctx = c.getContext("2d");
+    function writeInstructions(lat) {
+        const f = document.getElementById("cut-bottom");
+        const ftx = f.getContext("2d");
+        ftx.clearRect(0, 0, canvas.width, canvas.height);
+        if (!document.getElementById("instructions").checked) {
+            return;
+        }
+        direction = lat >= 0 ? "north" : "south";
+        var txt = "Instructions:\n1. Point the sundial " + direction + "\n2. Hold the sundial flat\n3. Estimate time by looking at the shadow\n4. Don't forget to account for daylight savings time\n5. Enjoy!!";
+        var x = 15;
+        var y = 10;
+        var lineheight = 15;
+        var lines = txt.split('\n');
+        ftx.font = "13px Times New Roman";
+        for (var i = 0; i < lines.length; i++) {
+            ftx.fillText(lines[i], x, y + (i * lineheight));
+        }
+    }
+    function drawAngle(abc) {
+        ctx.beginPath();
+        ctx.strokeStyle = "#000000";
+        ctx.moveTo(144, 144);
+        ctx.lineTo(288, (144 - 0.5 * 288 * Math.tan((90 - abc * 1) * Math.PI / 180)));
+        ctx.stroke();
+    }
+    function drawAngleLeft(cba) {
+        ctx.beginPath();
+        ctx.moveTo(144, 144);
+        ctx.lineTo(0, (144 - 0.5 * 288 * Math.tan((90 - cba * 1) * Math.PI / 180)));
+        ctx.stroke();
+    }
+    function angleAtHour(hour) {
+        let deg = Math.max(Math.min(document.getElementById("latitude").value, 90), -90);
+        let lat = Math.abs(deg);
+        const slat = Math.sin((lat * Math.PI) / 180);
+        var hr = 15 * hour;
+        var thour = Math.tan((hr * Math.PI) / 180);
+        return ((Math.atan(thour * slat) * 180) / Math.PI).toFixed(2);
+    }
+    function clearcanvas1() {
+        var canvas = document.getElementById('canvas'),
+            ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    function clearcanvas2() {
+        var canvas = document.getElementById('cut-top'),
+            ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    function clearcanvas3() {
+        var canvas = document.getElementById('triangleOne'),
+            ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    document.querySelector("#left").addEventListener("click", function () {
+        var deg = Math.max(Math.min(document.getElementById("latitude").value, 90), -90);
+        var lat = Math.abs(deg);
+        clearcanvas1();
+        clearcanvas2();
+        clearcanvas3();
+        ctx.beginPath();
+        ctx.strokeStyle = "#000000";
+        ctx.moveTo(144, 144);
+        ctx.lineTo(144, 0);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(144, 144);
+        ctx.lineTo(0, 144);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(144, 144);
+        ctx.lineTo(288, 144);
+        ctx.stroke();
+        angle = angleAtHour(1);
+        drawAngle(angle)
+        angle = angleAtHour(2);
+        drawAngle(angle)
+        angle = angleAtHour(3);
+        drawAngle(angle)
+        angle = angleAtHour(4);
+        drawAngle(angle)
+        angle = angleAtHour(5);
+        drawAngle(angle)
+        angle = angleAtHour(1);
+        drawAngleLeft(angle)
+        angle = angleAtHour(2);
+        drawAngleLeft(angle)
+        angle = angleAtHour(3);
+        drawAngleLeft(angle)
+        angle = angleAtHour(4);
+        drawAngleLeft(angle)
+        angle = angleAtHour(5);
+        drawAngleLeft(angle);
+
+
+        const d = document.getElementById("cut-top");
+        const dtx = d.getContext("2d");
+
+        dtx.beginPath();
+        dtx.strokeStyle = "#FF0000";
+        dtx.moveTo(75, 150);
+        dtx.lineTo(75, 150 - (75 * Math.tan(lat * Math.PI / 180)));
+        dtx.stroke();
+        ctx.beginPath();
+        ctx.strokeStyle = "#FF0000";
+        ctx.moveTo(144, 144);
+        ctx.lineTo(144, 36);
+        ctx.stroke();
+
+        const e = document.getElementById("triangleOne");
+        const etx = e.getContext("2d");
+        var toa = 75 * Math.tan(lat * Math.PI / 180);
+        etx.beginPath();
+        etx.moveTo(15, 15);
+        etx.lineTo(75 + 15, 15);
+        etx.stroke();
+        etx.beginPath();
+        etx.moveTo(15, 0);
+        etx.lineTo(15 + 54, 0);
+        etx.stroke();
+        etx.beginPath();
+        etx.moveTo(15, 0);
+        etx.lineTo(15, 15);
+        etx.stroke();
+        etx.beginPath();
+        etx.moveTo(15 + 54, 15);
+        etx.lineTo(15 + 54, 0);
+        etx.stroke();
+        etx.beginPath();
+        etx.moveTo(75 + 15, 15);
+        etx.lineTo(75 + 15, 15 + toa);
+        etx.stroke();
+        etx.beginPath();
+        etx.moveTo(15, 15);
+        etx.lineTo(75 + 15, 15 + toa);
+        etx.stroke();
+        etx.beginPath();
+        etx.moveTo(75 + 30, 15);
+        etx.lineTo(75 + 30, 15 + toa);
+        etx.stroke();
+        etx.beginPath();
+        etx.moveTo(15 + 75, 15 + toa);
+        etx.lineTo(75 + 30, 15 + toa);
+        etx.stroke();
+        etx.beginPath();
+        etx.moveTo(15 + 75, 15);
+        etx.lineTo(75 + 30, 15);
+        etx.stroke();
+        writeInstructions(document.getElementById("latitude").value)
+        if (!document.getElementById("pocketSundial").checked && !document.getElementById("bigSundial").checked) {
+            alert("Please select at least one type of sundial to make")
+            return;
+        }
+        try {
+            Calculate();
+        } catch (exceptionVar) {
+        } finally {
+            writeInstructions(document.getElementById("latitude").value)
+            try {
+                window.print();
+            } catch (e) {
+                document.execCommand('print', false, null);
+            }
+        }
+    });
+
+    console.log('Hey! You just found a hidden feature of this website! Below, type in "sundialAngles(your_latitude)" and press enter to get the list of sundial shadow angles for your latitude!')
+    document.getElementById("right").onclick = hfis => {
+        navigator.geolocation.getCurrentPosition(position => {
+            const rawlat = position.coords.latitude;
+            document.getElementById("latitude").value = Math.round(rawlat * 10) / 10;
+        })
+
+    };
+    function sundialAngles(myLat) {
+        console.log("At 6 am, the angle is -90 degrees")
+        for (let i = -5; i <= -1; i++) {
+            let deg = Math.max(Math.min(myLat, 90), -90);
+            let lat = Math.abs(deg);
+            const slat = Math.sin((lat * Math.PI) / 180);
+            var hr = 15 * i;
+            var thour = Math.tan((hr * Math.PI) / 180);
+            console.log("At " + (i + 12) + " am, the angle is " + ((Math.atan(thour * slat) * 180) / Math.PI).toFixed(2) + " degrees");
+        }
+        console.log("At noon, the angle is 0 degrees")
+        for (let i = 1; i <= 5; i++) {
+            let deg = Math.max(Math.min(myLat, 90), -90);
+            let lat = Math.abs(deg);
+            const slat = Math.sin((lat * Math.PI) / 180);
+            var hr = 15 * i;
+            var thour = Math.tan((hr * Math.PI) / 180);
+            console.log("At " + i + " pm, the angle is " + ((Math.atan(thour * slat) * 180) / Math.PI).toFixed(2) + " degrees");
+        } console.log("At 6 pm, the angle is 90 degrees")
+    }
+    setInterval(showTime, 1000);
+    function showTime() {
+        let time = new Date();
+        let hour = time.getHours();
+        let min = time.getMinutes();
+        let sec = time.getSeconds();
+        am_pm = "AM";
+
+        if (hour > 12) {
+            hour -= 12;
+            am_pm = "PM";
+        } else if (hour == 12) {
+            am_pm = "PM";
+        } else if (hour == 0) {
+            hr = 12;
+            am_pm = "AM";
+        }
+
+        hour = hour < 10 ? "0" + hour : hour;
+        min = min < 10 ? "0" + min : min;
+        sec = sec < 10 ? "0" + sec : sec;
+
+        let currentTime = hour + ":"
+            + min + ":" + sec + " " + am_pm;
+
+        document.getElementById("clock")
+            .innerHTML = currentTime;
+    }
+
+    showTime();
+</script>
+<script>
+    function cof2Obj(k) { k = k.split("\n"); var l = [], t, g, p, n, K; for (t in k) k.hasOwnProperty(t) && (g = k[t].replace(/^\s+|\s+$/g, "").split(/\s+/), 3 === g.length ? (p = parseFloat(g[0]), n = g[1], K = g[2]) : 6 === g.length && l.push({ n: parseInt(g[0], 10), m: parseInt(g[1], 10), gnm: parseFloat(g[2]), hnm: parseFloat(g[3]), dgnm: parseFloat(g[4]), dhnm: parseFloat(g[5]) })); return { epoch: p, model: n, modelDate: K, wmm: l } }
+    function Geomag(k) {
+        function l(a) { a = a.split("\n"); var d = [], h, b, k, m, y; for (h in a) a.hasOwnProperty(h) && (b = a[h].replace(/^\s+|\s+$/g, "").split(/\s+/), 3 === b.length ? (k = parseFloat(b[0]), m = b[1], y = b[2]) : 6 === b.length && d.push({ n: parseInt(b[0], 10), m: parseInt(b[1], 10), gnm: parseFloat(b[2]), hnm: parseFloat(b[3]), dgnm: parseFloat(b[4]), dhnm: parseFloat(b[5]) })); g = { epoch: k, model: m, modelDate: y, wmm: d } } function t(P) {
+            var d, h, b, k, m = [a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(),
+            a.slice(), a.slice(), a.slice(), a.slice()], y = [a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice()], g = [a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice()], q = [a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice(), a.slice()]; b = P.wmm; for (d in b) b.hasOwnProperty(d) && b[d].m <= b[d].n && (m[b[d].m][b[d].n] =
+                b[d].gnm, y[b[d].m][b[d].n] = b[d].dgnm, 0 !== b[d].m && (m[b[d].n][b[d].m - 1] = b[d].hnm, y[b[d].n][b[d].m - 1] = b[d].dhnm)); for (b = q[0][0] = 1; 12 >= b; b++)for (q[0][b] = q[0][b - 1] * (2 * b - 1) / b, h = 2, d = 0, k = b - d + 1; 0 < k; k--, d++)g[d][b] = ((b - 1) * (b - 1) - d * d) / ((2 * b - 1) * (2 * b - 3)), 0 < d && (h = (b - d + 1) * h / (b + d), q[d][b] = q[d - 1][b] * Math.sqrt(h), h = 1, m[b][d - 1] *= q[d][b], y[b][d - 1] *= q[d][b]), m[d][b] *= q[d][b], y[d][b] *= q[d][b]; g[1][1] = 0; D = { epoch: P.epoch, k: g, c: m, cd: y }
+        } var g, p = 6378.137, n = 6356.7523142, K = 6371.2, v = p * p, z = n * n, O = v - z, M = v * v, H = z * z, Q = M - H, a = [0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0], D; this.setCof = function (a) { l(a); t(g) }; this.getWmm = function () { return g }; this.setUnnorm = function (a) { D = a }; this.getUnnorm = function () { return D }; this.getEpoch = function () { return D.epoch }; this.setEllipsoid = function (a) { p = a.a; n = a.b; K = 6371.2; v = p * p; z = n * n; O = v - z; M = v * v; H = z * z; Q = M - H }; this.getEllipsoid = function () { return { a: p, b: n } }; this.mag = this.calc = this.calculate = function (a, d, h, b) {
+                function k(a) { return 180 / Math.PI * a } if (void 0 === D) throw Error("A World Magnetic Model has not been set."); if (void 0 ===
+                    a || void 0 === d) throw Error("Latitude and longitude are required arguments."); var m = D.epoch, g = D.k, l = D.c, q = D.cd, p = h / 3280.8399 || 0; b = function (a) { a = a || new Date; var b = a.getFullYear(), c = 864E5 * (365 + (0 === b % 400 || 0 === b % 4 && 0 < b % 100 ? 1 : 0)); return a.getFullYear() + (a.valueOf() - (new Date(b, 0)).valueOf()) / c }(b) - m; m = Math.PI / 180 * a; h = Math.PI / 180 * d; var n = Math.sin(h), I = Math.sin(m), A = Math.cos(h), c = Math.cos(m), w = I * I, G = c * c, u, E, t = h = m = 0, H = 0, L, N, e, S = [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], R = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], f = [0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0], F = [f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice()], B = f.slice(), C = f.slice(), J = f.slice(), r = [f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice()], f = [f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice(), f.slice()], x; B[0] = 0; B[1] = n; C[1] = A; F[0][0] = 0; C[0] = 1; J[0] = 1;
+                r[0][0] = 1; u = Math.sqrt(v - O * w); E = p * u; A = I / Math.sqrt((E + v) / (E + z) * ((E + v) / (E + z)) * G + w); n = Math.sqrt(1 - A * A); u = Math.sqrt(p * p + 2 * E + (M - Q * w) / (u * u)); w = Math.sqrt(v * G + z * w); p = (p + w) / u; I = O * c * I / (u * w); for (c = 2; 12 >= c; c++)B[c] = B[1] * C[c - 1] + C[1] * B[c - 1], C[c] = C[1] * C[c - 1] - B[1] * B[c - 1]; w = K / u; G = w * w; for (e = 1; 12 >= e; e++)for (G *= w, c = 0, E = e + c + 1; 0 < E; E--, c++)e === c ? (r[c][e] = n * r[c - 1][e - 1], f[c][e] = n * f[c - 1][e - 1] + A * r[c - 1][e - 1]) : 1 === e && 0 === c ? (r[c][e] = A * r[c][e - 1], f[c][e] = A * f[c][e - 1] - n * r[c][e - 1]) : 1 < e && e !== c && (c > e - 2 && (r[c][e - 2] = 0), c > e - 2 && (f[c][e - 2] =
+                    0), r[c][e] = A * r[c][e - 1] - g[c][e] * r[c][e - 2], f[c][e] = A * f[c][e - 1] - n * r[c][e - 1] - g[c][e] * f[c][e - 2]), F[c][e] = l[c][e] + b * q[c][e], 0 !== c && (F[e][c - 1] = l[e][c - 1] + b * q[e][c - 1]), L = G * r[c][e], 0 === c ? (N = F[c][e] * C[c], u = F[c][e] * B[c]) : (N = F[c][e] * C[c] + F[e][c - 1] * B[c], u = F[c][e] * B[c] - F[e][c - 1] * C[c]), h -= G * N * f[c][e], t += R[c] * u * L, m += S[e] * N * L, 0 === n && 1 === c && (J[e] = 1 === e ? J[e - 1] : A * J[e - 1] - g[c][e] * J[e - 2], L = G * J[e], H += R[c] * u * L); g = -h * p - m * I; l = 0 === n ? H : t / n; q = h * I - m * p; b = Math.sqrt(g * g + l * l); m = Math.sqrt(b * b + q * q); h = k(Math.atan2(l, g)); t = k(Math.atan2(q,
+                        b)); 55 <= Math.abs(a) && (0 < a && 0 <= d ? x = h - d : 0 < a && 0 > d ? x = h + Math.abs(d) : 0 > a && 0 <= d ? x = h + d : 0 > a && 0 > d && (x = h - Math.abs(d)), 180 < x ? x -= 360 : -180 > x && (x += 360)); return { dec: h, dip: t, ti: m, bh: b, bx: g, by: l, bz: q, lat: a, lon: d, gv: x }
+            }; if (void 0 !== k) if ("string" === typeof k) l(k), t(g); else if ("object" === typeof k) this.setUnnorm(k); else throw Error("Invalid argument type");
+    }
+</script>
