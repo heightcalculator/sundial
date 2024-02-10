@@ -18,6 +18,10 @@ function Calculate(f = !1) {
                             1) + "\u00b0", 2, 48)); a.font = "14px Verdana"; a.textAlign = "center"; a.textBaseline = "bottom"; a.fillStyle = "#00f"; p.title = _GetPageFit(p.width, p.height); $("rngLat").value = k; $("rngDiam").value = v
     }
 }
+function isMobile() {
+    const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+    return regex.test(navigator.userAgent);
+}
 
 const c = document.getElementById("canvas");
 const ctx = c.getContext("2d");
@@ -183,15 +187,24 @@ document.querySelector("#left").addEventListener("click", function () {
         }
         writeInstructions(document.getElementById("latitude").value)
         document.getElementById("right").style.display = "none";
-        try{
+        try {
             window.print();
-        } catch (e){
+        } catch (e) {
             document.execCommand('print', false, null);
-        }        
-        document.getElementById("sundial").style.display = "none";
-        document.getElementById("triangle").style.display = "none";
-        document.getElementById("cnvsDial").style.display = "none";
-        document.getElementById("right").style.display = "";
+        }
+        if (isMobile()) {
+            setTimeout(() => {
+                document.getElementById("sundial").style.display = "none";
+                document.getElementById("triangle").style.display = "none";
+                document.getElementById("cnvsDial").style.display = "none";
+                document.getElementById("right").style.display = "";
+            }, 1000);
+        } else {
+            document.getElementById("sundial").style.display = "none";
+            document.getElementById("triangle").style.display = "none";
+            document.getElementById("cnvsDial").style.display = "none";
+            document.getElementById("right").style.display = "";
+        }
     }
 });
 
