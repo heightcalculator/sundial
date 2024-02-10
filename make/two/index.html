@@ -20,11 +20,11 @@
 </head>
 
 <body>
-    <h1 class="noprint">Aarush Magic Sundial Maker</h1>
+    <h1 class="print">Aarush Magic Sundial Maker</h1>
     <div id="everything">
         <p class="noprint">Make A Sundial By Entering Your Latitude Or Using Your Location!</p>
-        <input class="noprint" type="number" id="latitude" placeholder="Enter Your Latitude" min-value="-90" max="90">   <i
-            class="noprint fa-solid fa-location-crosshairs" id="right"></i>
+        <input class="noprint" type="number" id="latitude" placeholder="Enter Your Latitude" min-value="-90" max="90">
+        <i class="noprint fa-solid fa-location-crosshairs" id="right"></i>
         <br class="noprint">
         <button id="left" class="noprint">Make My Sundial</button><br class="noprint">
         <input type="checkbox" id="pocketSundial" name="pocketSundial" value="true" class="noprint">
@@ -35,7 +35,7 @@
         <label for="instructions" class="noprint"> Include using instructions</label>
         <div class="print" id="sundial">
             <div id=sundial-top>
-                <img id=logo src="../logo_transparent.png" alt="Aarush Magic Logo">
+                <img id=logo src="logo_transparent.png" alt="Aarush Magic Logo">
                 <div id="sundial-top-top">
                     <canvas id="cut-top"></canvas>
                 </div>
@@ -51,15 +51,22 @@
             <canvas id="triangleOne"></canvas>
         </div>
         <p class="noprint"><b>Instructions:</b> Use a latitude or your location to make a sundial. The print it out on a
-            regular sheet of 8.5x11 piece of paper (cardstock would work better, but it will work with regular paper
+            blank white sheet of Letter or A4 paper (cardstock would work better, but it will work with regular paper
             too).<br>
             The <b>pocket sundial</b> sundial should print as a 6"x3" rectangle. Cut it out along with the triangular
-            piece on the bottom (called the Gnomon). On the sundial, cut along the 2 red lines. Fold the sundial along the middle to make a
+            piece on the bottom (called the Gnomon). On the sundial, cut along the 2 red lines. Fold the sundial along
+            the middle to make a
             right angle. Then insert the flaps of the Gnomon through the cut slot and fold them backwards. Tape or
-            glue them to the back. Place the Sundial flat and level, with the Gnomon (triangle) pointing toward True North if you're in the Northern hemisphere, or True South for the Southern hemisphere.<br>
-            The <b>bigger sundial</b> should print as a part of a circle with a "slice" taken out. Cut around the outer edge of the Sundial diagram. Fold the center vertical line up, and the 2 True North or True South lines down to create a triangle (called the Gnomon) that stands vertically from the horizontal paper sundial face. Make sure the Gnomon stands vertically, at right angles to the sundial face.
-            Place the Sundial flat and level, with the Gnomon (triangle) pointing toward True North if you're in the Northern hemisphere, or True South for the Southern hemisphere.<br>
+            glue them to the back. Place the Sundial flat and level, with the Gnomon (triangle) pointing toward True
+            North if you're in the Northern hemisphere, or True South for the Southern hemisphere.<br>
+            The <b>bigger sundial</b> should print as a part of a circle with a "slice" taken out. Cut around the outer
+            edge of the Sundial diagram. Fold the center vertical line up, and the 2 True North or True South lines down
+            to create a triangle (called the Gnomon) that stands vertically from the horizontal paper sundial face. Make
+            sure the Gnomon stands vertically, at right angles to the sundial face.
+            Place the Sundial flat and level, with the Gnomon (triangle) pointing toward True North if you're in the
+            Northern hemisphere, or True South for the Southern hemisphere.<br>
             Here's your current time: <span id="clock"></span></p>
+        <canvas id="cnvsDial" width="870" height="609" class="CnvsCenter"></canvas>
     </div>
     <a class="noprint" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
             alt="Creative Commons License" style="border-width:0"
@@ -78,7 +85,6 @@
                 <option value="0">_</option>
             </select><br>
         </div>
-        <canvas id="cnvsDial" width="870" height="609" class="CnvsCenter" style="margin-top: 0%"></canvas>
     </div>
 </body>
 
