@@ -178,32 +178,11 @@ document.querySelector("#left").addEventListener("click", function () {
         Calculate();
     } catch (exceptionVar) {
     } finally {
-        if (document.getElementById("pocketSundial").checked) {
-            document.getElementById("sundial").style.display = "block";
-            document.getElementById("triangle").style.display = "block";
-        }
-        if (document.getElementById("bigSundial").checked) {
-            document.getElementById("cnvsDial").style.display = "block";
-        }
         writeInstructions(document.getElementById("latitude").value)
-        document.getElementById("right").style.display = "none";
         try {
             window.print();
         } catch (e) {
             document.execCommand('print', false, null);
-        }
-        if (isMobile()) {
-            setTimeout(() => {
-                document.getElementById("sundial").style.display = "none";
-                document.getElementById("triangle").style.display = "none";
-                document.getElementById("cnvsDial").style.display = "none";
-                document.getElementById("right").style.display = "";
-            }, 10000);
-        } else {
-            document.getElementById("sundial").style.display = "none";
-            document.getElementById("triangle").style.display = "none";
-            document.getElementById("cnvsDial").style.display = "none";
-            document.getElementById("right").style.display = "";
         }
     }
 });
