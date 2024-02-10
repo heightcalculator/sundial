@@ -198,7 +198,7 @@ document.querySelector("#left").addEventListener("click", function () {
                 document.getElementById("triangle").style.display = "none";
                 document.getElementById("cnvsDial").style.display = "none";
                 document.getElementById("right").style.display = "";
-            }, 1000);
+            }, 10000);
         } else {
             document.getElementById("sundial").style.display = "none";
             document.getElementById("triangle").style.display = "none";
