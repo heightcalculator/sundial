@@ -178,7 +178,6 @@ document.querySelector("#left").addEventListener("click", function () {
         Calculate();
     } catch (exceptionVar) {
     } finally {
-        writeInstructions(document.getElementById("latitude").value)
         try {
             window.print();
         } catch (e) {
