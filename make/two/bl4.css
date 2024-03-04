@@ -1,3 +1,7 @@
+@font-face{
+    font-family: Pressley;
+    src: url('https://fonts.aarushmagic.com/fonts/Pressley-Regular.ttf')
+}
 html {
     scroll-behavior: smooth;
 }
@@ -5,18 +9,18 @@ html {
 body {
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
-    font: 16px/160% Arial;
+    font: 16px/160% Pressley;
     scrollbar-gutter: auto;
 }
 
 table {
-    font: 16px/160% Arial, sans-serif;
+    font: 16px/160% Pressley, sans-serif;
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
 }
 
 div {
-    font: 16px/160% Arial, sans-serif;
+    font: 16px/160% Pressley, sans-serif;
 }
 
 .Main {
@@ -24,7 +28,7 @@ div {
     text-align: left;
     background-color: #fff;
     color: #333;
-    font: 16px/150% Arial;
+    font: 16px/150% Pressley;
 }
 
 a,
@@ -87,7 +91,7 @@ a:hover,
     padding: 2px 0px 2px 0px;
     color: #000099;
     text-align: center;
-    font: 14px Arial, sans-serif;
+    font: 14px Pressley, sans-serif;
     text-decoration: none;
     background-color: #fbfbfb;
 }
@@ -108,7 +112,7 @@ a:hover,
 
 .NavMain {
     margin: 6px 26px 6px 6px;
-    font-family: Verdana, sans-serif;
+    font-family: Pressley, sans-serif;
     border: solid silver 2px;
     line-height: 38px;
     padding: 2px 6px 2px 6px;
@@ -124,7 +128,7 @@ a:hover,
 .NavMain2 {
     margin: 6px 6px 6px 6px;
     white-space: nowrap;
-    font-family: Arial, sans-serif;
+    font-family: Pressley, sans-serif;
     border: solid silver 1px;
     line-height: 38px;
     padding: 2px 6px 2px 6px;
@@ -141,7 +145,7 @@ a:hover,
 .NavMain2:hover {
     margin: 6px 6px 6px 6px;
     white-space: nowrap;
-    font-family: Arial, sans-serif;
+    font-family: Pressley, sans-serif;
     border: solid silver 1px;
     line-height: 38px;
     padding: 2px 6px 2px 6px;
@@ -193,29 +197,29 @@ a:hover,
 }
 
 .Hdr1 {
-    font: 19px Verdana;
+    font: 19px Pressley;
     color: #000;
     display: inline-block;
 }
 
 .Hdr3 {
-    font: bold 18px Verdana, sans-serif;
+    font: bold 18px Pressley, sans-serif;
     color: #000;
 }
 
 .AlrtSml {
-    font: 90% Verdana, sans-serif;
+    font: 90% Pressley, sans-serif;
     color: #ff0000;
 }
 
 .AlrtLrg {
-    font: bold 110% Verdana, sans-serif;
+    font: bold 110% Pressley, sans-serif;
     color: #ff0000;
 }
 
 .InTable {
     color: #333;
-    font: 14px Verdana, sans-serif;
+    font: 14px Pressley, sans-serif;
     text-align: left;
     background-color: #fafafa;
     border-radius: 6px;
@@ -234,7 +238,7 @@ a:hover,
     border-radius: 4px;
     background-color: #fafafa;
     border: solid 1px silver;
-    font: 14px Verdana, sans-serif;
+    font: 14px Pressley, sans-serif;
     grid-gap: 2px;
     color: #333;
     padding: 4px;
@@ -243,7 +247,7 @@ a:hover,
 /*Internal Table*/
 .InDiv {
     color: #333;
-    font: 14px/180% Verdana, sans-serif;
+    font: 14px/180% Pressley, sans-serif;
     text-align: left;
     background-color: #fafafa;
     border-radius: 6px;
@@ -253,14 +257,14 @@ a:hover,
 
 .Running,
 .Run {
-    font: bold 16px/26px Arial, sans-serif;
+    font: bold 16px/26px Pressley, sans-serif;
     color: #008000;
     word-break: keep-all;
     cursor: pointer;
 }
 
 .CalcRes {
-    font: bold 16px/26px Arial, sans-serif;
+    font: bold 16px/26px Pressley, sans-serif;
     color: #008000;
     word-break: keep-all;
 }
@@ -279,7 +283,7 @@ a:hover,
     border-radius: 4px;
     border: solid #0276FD 1px;
     cursor: pointer;
-    font: 18px Verdana;
+    font: 18px Pressley;
     vertical-align: middle;
 }
 
@@ -291,7 +295,7 @@ a:hover,
     border-radius: 4px;
     border: solid #0276FD 1px;
     cursor: pointer;
-    font: 12px Verdana;
+    font: 12px Pressley;
     vertical-align: middle;
 }
 
@@ -303,7 +307,7 @@ a:hover,
     border-radius: 4px;
     border: solid silver 1px;
     cursor: pointer;
-    font: 12px Verdana;
+    font: 12px Pressley;
     vertical-align: middle;
 }
 
@@ -363,7 +367,7 @@ a:hover,
 }
 
 .BtnLarge {
-    font: bold 18px Verdana, sans-serif;
+    font: bold 18px Pressley, sans-serif;
     width: 40px;
     height: 40px;
     color: #000;
@@ -429,7 +433,7 @@ a:hover,
     padding: 2px 4px 2px 4px;
     background-color: #0f0;
     color: #333;
-    font: bold 21px Verdana, sans-serif;
+    font: bold 21px Pressley, sans-serif;
     box-shadow: 3px 3px 3px #999;
     border-radius: 4px;
     border: 0;
@@ -442,7 +446,7 @@ a:hover,
     padding: 2px 4px 2px 4px;
     background-color: #f00;
     color: #fff;
-    font: bold 21px Verdana, sans-serif;
+    font: bold 21px Pressley, sans-serif;
     box-shadow: 3px 3px 3px #999;
     border-radius: 4px;
     border: 0;
@@ -479,7 +483,7 @@ area {
 }
 
 .Logo {
-    font: italic bold 24px/36px 'Arial Black', sans-serif;
+    font: italic bold 24px/36px 'Pressley Black', sans-serif;
     color: brown;
     cursor: pointer;
 }
@@ -490,23 +494,23 @@ label {
 
 /* STAIRS */
 .Regs {
-    font: 12px Verdana, sans-serif;
+    font: 12px Pressley, sans-serif;
     color: #ff0000;
 }
 
 .StringerRun {
-    font: bold 16px/200% Verdana, sans-serif;
+    font: bold 16px/200% Pressley, sans-serif;
     color: #00f;
     word-break: keep-all;
 }
 
 .Red18 {
-    font: bold 18px Arial, sans-serif;
+    font: bold 18px Pressley, sans-serif;
     color: #f00;
 }
 
 .Disp {
-    font: bold 16px/150% Verdana, sans-serif;
+    font: bold 16px/150% Pressley, sans-serif;
     color: #0000C0;
 }
 
@@ -519,7 +523,7 @@ label {
 }
 
 .SmallRed {
-    font: 10px Verdana, sans-serif;
+    font: 10px Pressley, sans-serif;
     color: #ff0000;
 }
 
@@ -540,17 +544,17 @@ option {
 
 /* ROOF */
 .Quant {
-    font: 16px/150% Verdana, sans-serif;
+    font: 16px/150% Pressley, sans-serif;
     color: #333;
 }
 
 .Atn {
-    font: bold 105% Verdana, sans-serif;
+    font: bold 105% Pressley, sans-serif;
     color: #008000;
 }
 
 .AtnLarge {
-    font: bold 125% Verdana, sans-serif;
+    font: bold 125% Pressley, sans-serif;
     color: #008000;
 }
 
@@ -576,7 +580,7 @@ option {
 }
 
 .Cost {
-    font: 20px Verdana;
+    font: 20px Pressley;
     color: #fff;
     padding: 4px 6px 4px 6px;
     letter-spacing: 1px;
@@ -608,7 +612,7 @@ option {
 }
 
 .tblDisp {
-    font-family: Verdana, sans-serif;
+    font-family: Pressley, sans-serif;
     width: 100%;
     border-collapse: collapse;
     background-color: white;
@@ -644,7 +648,7 @@ option {
     color: #fff;
     background-color: #F00;
     padding: 2px;
-    font: 18px Verdana, sans-serif;
+    font: 18px Pressley, sans-serif;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -759,7 +763,7 @@ input[type=range]:focus::-moz-range-track {
     font-size: 24px;
     border-radius: 6px;
     padding: 5px;
-    font-family: "Arial";
+    font-family: "Pressley";
     border: solid 1px Gray;
     cursor: pointer;
     color: blue;
@@ -918,7 +922,7 @@ hr {
 }
 
 .BtnRun {
-    font: bold 26px Verdana, sans-serif;
+    font: bold 26px Pressley, sans-serif;
     color: #000;
     box-shadow: 2px 2px 2px #999;
     border-radius: 4px;
@@ -933,7 +937,7 @@ button.gsc-search-button {
 }
 
 .BtnGreen {
-    font: 14px Verdana;
+    font: 14px Pressley;
     color: #fff;
     padding: 4px 6px 4px 6px;
     letter-spacing: 1px;
@@ -945,7 +949,7 @@ button.gsc-search-button {
 }
 
 .BtnMargin {
-    font: 14px Arial;
+    font: 14px Pressley;
     color: #000099;
     padding: 4px 5px 4px 4px;
     letter-spacing: 1px;
@@ -969,7 +973,7 @@ button.gsc-search-button {
 
 .InLabel {
     text-align: center;
-    font: 14px Verdana, sans-serif;
+    font: 14px Pressley, sans-serif;
     margin-left: 4px;
 }
 
@@ -977,7 +981,7 @@ button.gsc-search-button {
     vertical-align: middle;
     margin-right: 4px;
     margin-left: 4px;
-    font: 14px Verdana, sans-serif;
+    font: 14px Pressley, sans-serif;
 }
 
 .AlertCenter {
@@ -998,7 +1002,7 @@ button.gsc-search-button {
 
 .help {
     display: inline-block;
-    font: bold 15px Arial;
+    font: bold 15px Pressley;
     color: white;
     background-color: forestgreen;
     border-radius: 6px;
@@ -1030,7 +1034,7 @@ button.gsc-search-button {
     text-align: center;
     padding: 5px;
     border-radius: 6px;
-    font: 14px Arial;
+    font: 14px Pressley;
     line-height: 160%;
     position: absolute;
     top: 20px;
@@ -1051,7 +1055,7 @@ button.gsc-search-button {
     border-radius: 4px;
     border: solid #0276FD 1px;
     cursor: pointer;
-    font: 13px Verdana;
+    font: 13px Pressley;
     vertical-align: middle;
 }
 
@@ -1068,7 +1072,7 @@ button.gsc-search-button {
     border-radius: 4px;
     border: solid #31B94D 1px;
     cursor: pointer;
-    font: 13px Verdana;
+    font: 13px Pressley;
     vertical-align: middle;
 }
 
@@ -1133,7 +1137,7 @@ input[type="checkbox"] {
 }
 
 .New {
-    font: Bold Italic 14px 'Arial Black';
+    font: Bold Italic 14px 'Pressley Black';
     color: #f00;
     padding: 2px 4px 2px 4px;
     letter-spacing: 1px;
