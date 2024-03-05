@@ -1,6 +1,7 @@
 @font-face{
     font-family: Chloe;
-    src: url('https://fonts.aarushmagic.com/fonts/Chloe-Regular.ttf')
+    src: url('https://fonts.aarushmagic.com/fonts/Chloe-Regular.ttf');
+    font-weight: 600;
 }
 html {
     scroll-behavior: smooth;
