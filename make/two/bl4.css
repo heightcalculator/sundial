@@ -2,6 +2,12 @@
     font-family: Chloe;
     src: url('https://fonts.aarushmagic.com/fonts/Chloe-Regular.ttf');
 }
+
+@font-face{
+    font-family: Lexi;
+    src: url('https://fonts.aarushmagic.com/fonts/Lexi-Regular.ttf');
+}
+
 html {
     scroll-behavior: smooth;
 }
