@@ -1,11 +1,7 @@
-@font-face{
-    font-family: Chloe;
-    src: url('https://fonts.aarushmagic.com/fonts/Chloe-Regular.ttf');
-}
-
-@font-face{
-    font-family: Lexi;
-    src: url('https://fonts.aarushmagic.com/fonts/Lexi-Regular.ttf');
+/* This font can be found on https://fonts.aarushmagic.com */
+@font-face {    
+    font-family: 'Lindsey'; 
+    src: url('https://fonts.aarushmagic.com/fonts/Lindsey-Regular.ttf');
 }
 
 html {
@@ -15,18 +11,18 @@ html {
 body {
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
-    font: 16px/160% Chloe;
+    font: 16px/160% Lindsey;
     scrollbar-gutter: auto;
 }
 
 table {
-    font: 16px/160% Chloe, sans-serif;
+    font: 16px/160% Lindsey, sans-serif;
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
 }
 
 div {
-    font: 16px/160% Chloe, sans-serif;
+    font: 16px/160% Lindsey, sans-serif;
 }
 
 .Main {
@@ -34,7 +30,7 @@ div {
     text-align: left;
     background-color: #fff;
     color: #333;
-    font: 16px/150% Chloe;
+    font: 16px/150% Lindsey;
 }
 
 a,
@@ -97,7 +93,7 @@ a:hover,
     padding: 2px 0px 2px 0px;
     color: #000099;
     text-align: center;
-    font: 14px Chloe, sans-serif;
+    font: 14px Lindsey, sans-serif;
     text-decoration: none;
     background-color: #fbfbfb;
 }
@@ -118,7 +114,7 @@ a:hover,
 
 .NavMain {
     margin: 6px 26px 6px 6px;
-    font-family: Chloe, sans-serif;
+    font-family: Lindsey, sans-serif;
     border: solid silver 2px;
     line-height: 38px;
     padding: 2px 6px 2px 6px;
@@ -134,7 +130,7 @@ a:hover,
 .NavMain2 {
     margin: 6px 6px 6px 6px;
     white-space: nowrap;
-    font-family: Chloe, sans-serif;
+    font-family: Lindsey, sans-serif;
     border: solid silver 1px;
     line-height: 38px;
     padding: 2px 6px 2px 6px;
@@ -151,7 +147,7 @@ a:hover,
 .NavMain2:hover {
     margin: 6px 6px 6px 6px;
     white-space: nowrap;
-    font-family: Chloe, sans-serif;
+    font-family: Lindsey, sans-serif;
     border: solid silver 1px;
     line-height: 38px;
     padding: 2px 6px 2px 6px;
@@ -203,29 +199,29 @@ a:hover,
 }
 
 .Hdr1 {
-    font: 19px Chloe;
+    font: 19px Lindsey;
     color: #000;
     display: inline-block;
 }
 
 .Hdr3 {
-    font: bold 18px Chloe, sans-serif;
+    font: bold 18px Lindsey, sans-serif;
     color: #000;
 }
 
 .AlrtSml {
-    font: 90% Chloe, sans-serif;
+    font: 90% Lindsey, sans-serif;
     color: #ff0000;
 }
 
 .AlrtLrg {
-    font: bold 110% Chloe, sans-serif;
+    font: bold 110% Lindsey, sans-serif;
     color: #ff0000;
 }
 
 .InTable {
     color: #333;
-    font: 14px Chloe, sans-serif;
+    font: 14px Lindsey, sans-serif;
     text-align: left;
     background-color: #fafafa;
     border-radius: 6px;
@@ -244,7 +240,7 @@ a:hover,
     border-radius: 4px;
     background-color: #fafafa;
     border: solid 1px silver;
-    font: 14px Chloe, sans-serif;
+    font: 14px Lindsey, sans-serif;
     grid-gap: 2px;
     color: #333;
     padding: 4px;
@@ -253,7 +249,7 @@ a:hover,
 /*Internal Table*/
 .InDiv {
     color: #333;
-    font: 14px/180% Chloe, sans-serif;
+    font: 14px/180% Lindsey, sans-serif;
     text-align: left;
     background-color: #fafafa;
     border-radius: 6px;
@@ -263,14 +259,14 @@ a:hover,
 
 .Running,
 .Run {
-    font: bold 16px/26px Chloe, sans-serif;
+    font: bold 16px/26px Lindsey, sans-serif;
     color: #008000;
     word-break: keep-all;
     cursor: pointer;
 }
 
 .CalcRes {
-    font: bold 16px/26px Chloe, sans-serif;
+    font: bold 16px/26px Lindsey, sans-serif;
     color: #008000;
     word-break: keep-all;
 }
@@ -289,7 +285,7 @@ a:hover,
     border-radius: 4px;
     border: solid #0276FD 1px;
     cursor: pointer;
-    font: 18px Chloe;
+    font: 18px Lindsey;
     vertical-align: middle;
 }
 
@@ -301,7 +297,7 @@ a:hover,
     border-radius: 4px;
     border: solid #0276FD 1px;
     cursor: pointer;
-    font: 12px Chloe;
+    font: 12px Lindsey;
     vertical-align: middle;
 }
 
@@ -313,7 +309,7 @@ a:hover,
     border-radius: 4px;
     border: solid silver 1px;
     cursor: pointer;
-    font: 12px Chloe;
+    font: 12px Lindsey;
     vertical-align: middle;
 }
 
@@ -373,7 +369,7 @@ a:hover,
 }
 
 .BtnLarge {
-    font: bold 18px Chloe, sans-serif;
+    font: bold 18px Lindsey, sans-serif;
     width: 40px;
     height: 40px;
     color: #000;
@@ -439,7 +435,7 @@ a:hover,
     padding: 2px 4px 2px 4px;
     background-color: #0f0;
     color: #333;
-    font: bold 21px Chloe, sans-serif;
+    font: bold 21px Lindsey, sans-serif;
     box-shadow: 3px 3px 3px #999;
     border-radius: 4px;
     border: 0;
@@ -452,7 +448,7 @@ a:hover,
     padding: 2px 4px 2px 4px;
     background-color: #f00;
     color: #fff;
-    font: bold 21px Chloe, sans-serif;
+    font: bold 21px Lindsey, sans-serif;
     box-shadow: 3px 3px 3px #999;
     border-radius: 4px;
     border: 0;
@@ -489,7 +485,7 @@ area {
 }
 
 .Logo {
-    font: italic bold 24px/36px 'Chloe Black', sans-serif;
+    font: italic bold 24px/36px 'Lindsey Black', sans-serif;
     color: brown;
     cursor: pointer;
 }
@@ -500,23 +496,23 @@ label {
 
 /* STAIRS */
 .Regs {
-    font: 12px Chloe, sans-serif;
+    font: 12px Lindsey, sans-serif;
     color: #ff0000;
 }
 
 .StringerRun {
-    font: bold 16px/200% Chloe, sans-serif;
+    font: bold 16px/200% Lindsey, sans-serif;
     color: #00f;
     word-break: keep-all;
 }
 
 .Red18 {
-    font: bold 18px Chloe, sans-serif;
+    font: bold 18px Lindsey, sans-serif;
     color: #f00;
 }
 
 .Disp {
-    font: bold 16px/150% Chloe, sans-serif;
+    font: bold 16px/150% Lindsey, sans-serif;
     color: #0000C0;
 }
 
@@ -529,7 +525,7 @@ label {
 }
 
 .SmallRed {
-    font: 10px Chloe, sans-serif;
+    font: 10px Lindsey, sans-serif;
     color: #ff0000;
 }
 
@@ -550,17 +546,17 @@ option {
 
 /* ROOF */
 .Quant {
-    font: 16px/150% Chloe, sans-serif;
+    font: 16px/150% Lindsey, sans-serif;
     color: #333;
 }
 
 .Atn {
-    font: bold 105% Chloe, sans-serif;
+    font: bold 105% Lindsey, sans-serif;
     color: #008000;
 }
 
 .AtnLarge {
-    font: bold 125% Chloe, sans-serif;
+    font: bold 125% Lindsey, sans-serif;
     color: #008000;
 }
 
@@ -586,7 +582,7 @@ option {
 }
 
 .Cost {
-    font: 20px Chloe;
+    font: 20px Lindsey;
     color: #fff;
     padding: 4px 6px 4px 6px;
     letter-spacing: 1px;
@@ -618,7 +614,7 @@ option {
 }
 
 .tblDisp {
-    font-family: Chloe, sans-serif;
+    font-family: Lindsey, sans-serif;
     width: 100%;
     border-collapse: collapse;
     background-color: white;
@@ -654,7 +650,7 @@ option {
     color: #fff;
     background-color: #F00;
     padding: 2px;
-    font: 18px Chloe, sans-serif;
+    font: 18px Lindsey, sans-serif;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -769,7 +765,7 @@ input[type=range]:focus::-moz-range-track {
     font-size: 24px;
     border-radius: 6px;
     padding: 5px;
-    font-family: "Chloe";
+    font-family: "Lindsey";
     border: solid 1px Gray;
     cursor: pointer;
     color: blue;
@@ -928,7 +924,7 @@ hr {
 }
 
 .BtnRun {
-    font: bold 26px Chloe, sans-serif;
+    font: bold 26px Lindsey, sans-serif;
     color: #000;
     box-shadow: 2px 2px 2px #999;
     border-radius: 4px;
@@ -943,7 +939,7 @@ button.gsc-search-button {
 }
 
 .BtnGreen {
-    font: 14px Chloe;
+    font: 14px Lindsey;
     color: #fff;
     padding: 4px 6px 4px 6px;
     letter-spacing: 1px;
@@ -955,7 +951,7 @@ button.gsc-search-button {
 }
 
 .BtnMargin {
-    font: 14px Chloe;
+    font: 14px Lindsey;
     color: #000099;
     padding: 4px 5px 4px 4px;
     letter-spacing: 1px;
@@ -979,7 +975,7 @@ button.gsc-search-button {
 
 .InLabel {
     text-align: center;
-    font: 14px Chloe, sans-serif;
+    font: 14px Lindsey, sans-serif;
     margin-left: 4px;
 }
 
@@ -987,7 +983,7 @@ button.gsc-search-button {
     vertical-align: middle;
     margin-right: 4px;
     margin-left: 4px;
-    font: 14px Chloe, sans-serif;
+    font: 14px Lindsey, sans-serif;
 }
 
 .AlertCenter {
@@ -1008,7 +1004,7 @@ button.gsc-search-button {
 
 .help {
     display: inline-block;
-    font: bold 15px Chloe;
+    font: bold 15px Lindsey;
     color: white;
     background-color: forestgreen;
     border-radius: 6px;
@@ -1040,7 +1036,7 @@ button.gsc-search-button {
     text-align: center;
     padding: 5px;
     border-radius: 6px;
-    font: 14px Chloe;
+    font: 14px Lindsey;
     line-height: 160%;
     position: absolute;
     top: 20px;
@@ -1061,7 +1057,7 @@ button.gsc-search-button {
     border-radius: 4px;
     border: solid #0276FD 1px;
     cursor: pointer;
-    font: 13px Chloe;
+    font: 13px Lindsey;
     vertical-align: middle;
 }
 
@@ -1078,7 +1074,7 @@ button.gsc-search-button {
     border-radius: 4px;
     border: solid #31B94D 1px;
     cursor: pointer;
-    font: 13px Chloe;
+    font: 13px Lindsey;
     vertical-align: middle;
 }
 
@@ -1143,7 +1139,7 @@ input[type="checkbox"] {
 }
 
 .New {
-    font: Bold Italic 14px 'Chloe Black';
+    font: Bold Italic 14px 'Lindsey Black';
     color: #f00;
     padding: 2px 4px 2px 4px;
     letter-spacing: 1px;
